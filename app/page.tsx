@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, FlaskConical, Plug, ShieldCheck } from "lucide-react";
 import { Hero } from "@/components/sections/hero";
 import { StatsBand } from "@/components/stats-band";
 import { SectionHeading } from "@/components/section-heading";
@@ -110,6 +110,71 @@ export default function HomePage() {
           <div className="mt-14">
             <ProcessSteps />
           </div>
+        </div>
+      </section>
+
+      {/* Approach teaser */}
+      <section className="relative py-24 md:py-32">
+        <div className="container-max">
+          <div className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
+            <SectionHeading
+              eyebrow="Our approach"
+              title="See exactly how we build"
+              description="No black boxes. Explore how we take AI from idea to a grounded, secure, production-grade system you can trust."
+            />
+            <Reveal delay={0.15}>
+              <Link
+                href="/approach"
+                className="group inline-flex items-center gap-1.5 whitespace-nowrap text-sm font-medium text-white/70 transition-colors hover:text-white"
+              >
+                Explore our approach
+                <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+              </Link>
+            </Reveal>
+          </div>
+
+          <RevealGroup className="mt-12 grid gap-5 md:grid-cols-3">
+            {[
+              {
+                icon: FlaskConical,
+                title: "Built & evaluated",
+                description:
+                  "Grounded in your data and measured against golden datasets — quality proven with evidence, not vibes.",
+              },
+              {
+                icon: Plug,
+                title: "Integrated securely",
+                description:
+                  "Wired into your existing stack behind authenticated APIs, with humans in the loop where it counts.",
+              },
+              {
+                icon: ShieldCheck,
+                title: "Trustworthy by default",
+                description:
+                  "Data isolation, least-privilege access, and production monitoring built in from day one.",
+              },
+            ].map((item) => {
+              const Icon = item.icon;
+              return (
+                <RevealItem key={item.title}>
+                  <Link
+                    href="/approach"
+                    className="glass glass-hover group flex h-full flex-col p-7"
+                  >
+                    <span className="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-white/10 bg-white/[0.03] text-accent-cyan transition-colors duration-500 group-hover:border-accent-cyan/40">
+                      <Icon className="h-5 w-5" strokeWidth={1.6} />
+                    </span>
+                    <h3 className="mt-5 font-display text-lg font-semibold tracking-tight text-white">
+                      {item.title}
+                    </h3>
+                    <p className="mt-2.5 text-sm leading-relaxed text-white/55">
+                      {item.description}
+                    </p>
+                  </Link>
+                </RevealItem>
+              );
+            })}
+          </RevealGroup>
         </div>
       </section>
 

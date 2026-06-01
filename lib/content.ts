@@ -11,6 +11,17 @@ import {
   Cpu,
   Cloud,
   Bot,
+  Search,
+  FlaskConical,
+  Plug,
+  Activity,
+  Boxes,
+  Lock,
+  Network,
+  KeyRound,
+  ClipboardCheck,
+  Eye,
+  Gauge,
   type LucideIcon,
 } from "lucide-react";
 
@@ -222,10 +233,10 @@ export type Stat = {
 };
 
 export const stats: Stat[] = [
-  { value: "30+", label: "Engineers & specialists" },
-  { value: "12", label: "Industries served" },
-  { value: "4×", label: "Avg. faster delivery" },
-  { value: "99.9%", label: "Uptime on managed platforms" },
+  { value: "2026", label: "Founded in Dubai" },
+  { value: "8", label: "Engineers & specialists" },
+  { value: "100%", label: "Senior-led delivery" },
+  { value: "~2 wks", label: "From kickoff to prototype" },
 ];
 
 export type CaseStudy = {
@@ -365,5 +376,169 @@ export const values = [
     title: "Partners, not vendors",
     description:
       "We embed with your team, transfer knowledge, and leave you stronger than we found you.",
+  },
+];
+
+/* ------------------------------------------------------------------ *
+ * Approach infographics (the /approach page)
+ * Visual, content-driven explanations of how we build, integrate,
+ * and assure quality. Keep copy tight — these render inside diagrams.
+ * ------------------------------------------------------------------ */
+
+export type BuildStage = {
+  id: string;
+  icon: LucideIcon;
+  title: string;
+  summary: string;
+  detail: string;
+  points: string[];
+};
+
+/** "How we build AI" — an interactive, staged pipeline. */
+export const buildPipeline: BuildStage[] = [
+  {
+    id: "frame",
+    icon: Search,
+    title: "Discover & frame",
+    summary: "Define the problem and what success means.",
+    detail:
+      "Before a single model is chosen, we map the real business problem, the data available, and the metric that proves it worked. No AI for the sake of AI.",
+    points: [
+      "Use-case and ROI assessment",
+      "Data and feasibility review",
+      "Clear success metrics agreed up front",
+    ],
+  },
+  {
+    id: "ground",
+    icon: Database,
+    title: "Ground in your data",
+    summary: "Connect knowledge with privacy built in.",
+    detail:
+      "We connect the model to your real context — documents, databases, and tools — using retrieval and structured access so answers are grounded, not guessed.",
+    points: [
+      "Retrieval-augmented generation (RAG)",
+      "Secure connectors to your sources",
+      "Privacy and data-minimisation by design",
+    ],
+  },
+  {
+    id: "build",
+    icon: FlaskConical,
+    title: "Build & evaluate",
+    summary: "Engineer it, then prove it with evals.",
+    detail:
+      "We build the system and measure it against golden datasets and regression tests — so quality is demonstrated with evidence, not vibes.",
+    points: [
+      "Prompt, tool, and pipeline engineering",
+      "Golden datasets & automated evals",
+      "Guardrails against unsafe output",
+    ],
+  },
+  {
+    id: "integrate",
+    icon: Plug,
+    title: "Integrate",
+    summary: "Wire it into your stack, safely.",
+    detail:
+      "The system plugs into your existing tools behind authenticated APIs, with humans kept in the loop wherever decisions carry real weight.",
+    points: [
+      "Secure API integration",
+      "Human-in-the-loop for high-stakes steps",
+      "Rollout behind feature flags",
+    ],
+  },
+  {
+    id: "monitor",
+    icon: Activity,
+    title: "Monitor & improve",
+    summary: "Watch quality, cost, and drift in production.",
+    detail:
+      "Once live, we track accuracy, latency, and spend — catching drift early and tightening the loop so the system gets better over time.",
+    points: [
+      "Quality, cost & latency dashboards",
+      "Drift and regression alerts",
+      "Continuous evaluation & iteration",
+    ],
+  },
+];
+
+export type IntegrationLayer = {
+  icon: LucideIcon;
+  title: string;
+  detail: string;
+};
+
+/** "How we plug into your stack" — a layered architecture diagram. */
+export const integrationLayers: IntegrationLayer[] = [
+  {
+    icon: Boxes,
+    title: "Your systems",
+    detail:
+      "The apps, CRMs, data warehouses, and tools where your work already happens.",
+  },
+  {
+    icon: Lock,
+    title: "Secure integration layer",
+    detail:
+      "Authenticated APIs, least-privilege access, and audit logs sit between you and the AI.",
+  },
+  {
+    icon: Network,
+    title: "Orchestration & retrieval",
+    detail:
+      "Routing, retrieval, and tool-use ground every response in your real, current context.",
+  },
+  {
+    icon: Brain,
+    title: "AI core",
+    detail:
+      "Carefully chosen models — evaluated, guard-railed, and tuned to your specific use case.",
+  },
+];
+
+export type Assurance = {
+  icon: LucideIcon;
+  title: string;
+  detail: string;
+};
+
+/** Security & quality principles — interactive cards. */
+export const assurance: Assurance[] = [
+  {
+    icon: Lock,
+    title: "Your data stays yours",
+    detail:
+      "We isolate your data, minimise what we send, and never train third-party models on it.",
+  },
+  {
+    icon: KeyRound,
+    title: "Least-privilege access",
+    detail:
+      "Scoped credentials, managed secrets, and full audit trails are the default, not an upgrade.",
+  },
+  {
+    icon: ClipboardCheck,
+    title: "Evaluated, not assumed",
+    detail:
+      "Every AI feature ships against golden datasets and regression evals before it reaches a user.",
+  },
+  {
+    icon: Eye,
+    title: "Human-in-the-loop",
+    detail:
+      "High-stakes actions get human review and clear guardrails before anything runs for real.",
+  },
+  {
+    icon: Gauge,
+    title: "Built to observe",
+    detail:
+      "Quality, latency, and cost are monitored in production from the very first day.",
+  },
+  {
+    icon: ShieldCheck,
+    title: "Production-grade craft",
+    detail:
+      "Typed, tested, and peer-reviewed code — systems you can safely build on for years.",
   },
 ];

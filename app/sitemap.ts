@@ -4,7 +4,7 @@ import { caseStudies, insights } from "@/lib/content";
 const BASE = "https://deepaitech.ai";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const routes = ["", "/services", "/solutions", "/work", "/about", "/insights", "/contact"].map(
+  const routes = ["", "/services", "/solutions", "/approach", "/work", "/about", "/insights", "/contact"].map(
     (path) => ({
       url: `${BASE}${path}`,
       lastModified: new Date(),

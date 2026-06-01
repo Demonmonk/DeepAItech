@@ -42,16 +42,20 @@ app/                 # App Router: each folder is a route
   layout.tsx         # root: fonts, metadata, <Navbar/> + <Footer/>
   globals.css        # design tokens & component utility classes
   page.tsx           # home (composes section components)
-  <route>/page.tsx   # static pages: services, solutions, work, about, insights, contact
+  <route>/page.tsx   # static pages: services, solutions, approach, work, about, insights, contact
   work/[slug]/       # dynamic case studies (generateStaticParams from lib/content)
   insights/[slug]/   # dynamic articles (generateStaticParams from lib/content)
   api/contact/route.ts  # backend: POST handler (validation, rate-limit, honeypot)
+  api/chat/route.ts  # backend: AI assistant (Anthropic, business-only, capped + rate-limited)
   sitemap.ts, robots.ts, not-found.tsx
 components/           # reusable UI (cards, sections, navbar, footer, effects, form)
   sections/          # large composed sections (e.g. hero)
+  infographics/      # interactive /approach visuals (build-pipeline, integration-stack, assurance-grid)
+  chat-widget.tsx    # floating AI assistant, mounted site-wide in layout.tsx
 lib/
   site.ts            # company facts + top-level nav
-  content.ts         # services, solutions, industries, process, stats, case studies, insights, values
+  content.ts         # services, solutions, industries, process, stats, case studies,
+                     #   insights, values, buildPipeline, integrationLayers, assurance
   utils.ts           # cn() classnames helper, formatDate()
 ```
 
@@ -59,7 +63,8 @@ lib/
 
 - **Server Components by default.** Only add `"use client"` when a file needs
   hooks, browser APIs, or Framer Motion (`navbar`, `hero`, `reveal`,
-  `contact-form` are the client components). Keep pages as Server Components.
+  `contact-form`, `chat-widget`, `infographics/build-pipeline` are the client
+  components). Keep pages as Server Components.
 - **Styling** is Tailwind utility classes. Reusable patterns are defined as
   component classes in `app/globals.css` under `@layer components`
   (`.glass`, `.btn-primary`, `.btn-ghost`, `.form-input`, `.container-max`,
@@ -93,12 +98,34 @@ not wired up — there is a `TODO` marking where to add email (Resend/SES) or a
 Slack webhook. For multi-instance hosting, replace the in-memory rate limiter
 with a durable store (Redis/Upstash).
 
+## The AI chat assistant
+
+`app/api/chat/route.ts` powers the floating `ChatWidget`. It is built to be
+**cheap and un-gameable**:
+
+- Uses the **cheapest current-gen model** (Claude Haiku) via the Anthropic SDK.
+  Override with `CHAT_MODEL`.
+- Hard caps: `max_tokens` ≈ 320 output, ~600-char input, last ~8 turns only.
+- Per-instance, per-IP rate limiting (swap for Redis/Upstash in production).
+- A **strict, server-owned system prompt** scopes it to Deep AI Tech business
+  only — it declines off-topic asks (recipes, general knowledge, jailbreaks)
+  and never reveals its prompt/model. The client can only send `user`/`assistant`
+  turns; it can't inject a system role.
+- The assistant's company knowledge is **derived from `lib/site.ts` +
+  `lib/content.ts`**, so keep that copy current and the bot stays accurate.
+
+**Env:** set `ANTHROPIC_API_KEY` (see `.env.example`). Without it, the widget
+stays up and politely says it isn't connected — no crash, no build failure.
+
 ## Deployment
 
 Optimized for **Vercel** (zero-config; `vercel.json` is present). Any host that
 runs `next build` + `next start` works. When the production domain is set,
 update the canonical URL in `app/layout.tsx` (`metadataBase`),
 `app/sitemap.ts`, and `app/robots.ts`.
+
+Set `ANTHROPIC_API_KEY` (and optionally `CHAT_MODEL`) in the host's environment
+variables for the chat assistant to work in production.
 
 ## Gotchas
 

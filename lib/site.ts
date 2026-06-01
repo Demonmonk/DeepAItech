@@ -7,7 +7,7 @@ export const site = {
   location: "Dubai, United Arab Emirates",
   email: "hello@deepaitech.ai",
   phone: "+971 4 000 0000",
-  founded: 2024,
+  founded: 2026,
   social: {
     linkedin: "https://www.linkedin.com/company/deep-ai-tech",
     x: "https://x.com/deepaitech",
@@ -18,6 +18,7 @@ export const site = {
 export const nav = [
   { label: "Services", href: "/services" },
   { label: "Solutions", href: "/solutions" },
+  { label: "Approach", href: "/approach" },
   { label: "Work", href: "/work" },
   { label: "About", href: "/about" },
   { label: "Insights", href: "/insights" },
