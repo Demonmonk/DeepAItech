@@ -14,25 +14,24 @@ export function InsightCard({
     <Link
       href={`/insights/${insight.slug}`}
       className={cn(
-        "group flex flex-col gap-4 rounded-2xl border border-white/10 bg-white/[0.02] p-7 transition-all duration-500 hover:border-white/20 hover:bg-white/[0.04]",
+        "group flex h-full flex-col border-t border-white/15 pt-6 transition-colors duration-500 hover:border-accent-cyan/50",
         className
       )}
     >
       <div className="flex items-center gap-3 text-xs">
-        <span className="rounded-full border border-accent-cyan/30 bg-accent-cyan/10 px-3 py-1 font-medium text-accent-glow">
-          {insight.category}
-        </span>
+        <span className="index text-accent-glow">{insight.category}</span>
+        <span className="text-white/30">·</span>
         <span className="text-white/40">{insight.readTime} read</span>
       </div>
 
-      <h3 className="font-display text-lg font-semibold leading-snug tracking-tight text-white transition-colors group-hover:text-accent-glow">
+      <h3 className="headline mt-4 text-xl leading-snug text-white transition-colors duration-500 group-hover:text-accent-glow">
         {insight.title}
       </h3>
-      <p className="flex-1 text-sm leading-relaxed text-white/55">
+      <p className="mt-3 flex-1 text-sm leading-relaxed text-white/55">
         {insight.excerpt}
       </p>
 
-      <div className="flex items-center justify-between border-t border-white/10 pt-4 text-xs text-white/40">
+      <div className="mt-5 flex items-center justify-between text-xs text-white/40">
         <span>{formatDate(insight.date)}</span>
         <span className="inline-flex items-center gap-1 text-white/60 transition-colors group-hover:text-white">
           Read

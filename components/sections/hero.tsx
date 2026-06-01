@@ -2,17 +2,18 @@
 
 import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
-import { ArrowUpRight, Sparkles } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import { site } from "@/lib/site";
 
 const ease = [0.16, 1, 0.3, 1] as const;
+const sectors = ["Finance", "Healthcare", "Retail", "Government", "PropTech"];
 
 export function Hero() {
   const reduce = useReducedMotion();
 
   const container = {
     hidden: {},
-    show: { transition: { staggerChildren: 0.09, delayChildren: 0.1 } },
+    show: { transition: { staggerChildren: 0.09, delayChildren: 0.08 } },
   };
   const item = {
     hidden: reduce ? {} : { opacity: 0, y: 22 },
@@ -20,80 +21,78 @@ export function Hero() {
   };
 
   return (
-    <section className="relative flex min-h-[92vh] items-center overflow-hidden pt-28">
+    <section className="relative flex min-h-[94vh] items-center overflow-hidden pt-32">
       {/* orbital decoration */}
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
-        <div className="absolute right-[-15%] top-1/2 h-[640px] w-[640px] -translate-y-1/2 rounded-full border border-white/[0.06]" />
-        <div className="absolute right-[-8%] top-1/2 h-[440px] w-[440px] -translate-y-1/2 rounded-full border border-white/[0.05]" />
+        <div className="absolute right-[-18%] top-1/2 h-[680px] w-[680px] -translate-y-1/2 rounded-full border border-white/[0.06]" />
+        <div className="absolute right-[-10%] top-1/2 h-[460px] w-[460px] -translate-y-1/2 rounded-full border border-white/[0.05]" />
         <motion.div
-          className="absolute right-[18%] top-1/2 h-3 w-3 -translate-y-1/2 rounded-full bg-accent-cyan shadow-[0_0_24px_4px_rgba(34,211,238,0.7)]"
+          className="absolute right-[16%] top-1/2 h-2.5 w-2.5 -translate-y-1/2 rounded-full bg-accent-cyan shadow-[0_0_24px_4px_rgba(34,211,238,0.7)]"
           animate={reduce ? undefined : { rotate: 360 }}
-          transition={{ duration: 28, repeat: Infinity, ease: "linear" }}
-          style={{ transformOrigin: "-320px 0" }}
+          transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
+          style={{ transformOrigin: "-330px 0" }}
         />
       </div>
 
       <div className="container-max">
-        <motion.div
-          variants={container}
-          initial="hidden"
-          animate="show"
-          className="max-w-4xl"
-        >
-          <motion.div variants={item}>
-            <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.03] px-4 py-1.5 text-xs font-medium text-white/70 backdrop-blur-sm">
-              <Sparkles className="h-3.5 w-3.5 text-accent-cyan" />
-              AI · Software · Digital Transformation
-              <span className="h-1 w-1 rounded-full bg-white/30" />
-              {site.location}
+        <motion.div variants={container} initial="hidden" animate="show">
+          {/* masthead */}
+          <motion.div
+            variants={item}
+            className="flex items-center justify-between border-b border-white/10 pb-5"
+          >
+            <span className="index">
+              {site.name} — AI &amp; Software Consultancy
+            </span>
+            <span className="index hidden sm:block">
+              Est. {site.founded} · {site.location}
             </span>
           </motion.div>
 
+          {/* headline */}
           <motion.h1
             variants={item}
-            className="mt-7 font-display text-[2.6rem] font-semibold leading-[1.03] tracking-tightest text-white text-balance sm:text-6xl lg:text-7xl"
+            className="headline mt-10 max-w-5xl text-[2.7rem] leading-[1.02] text-white text-balance sm:text-6xl lg:text-[5.2rem]"
           >
-            We build the{" "}
-            <span className="text-gradient">intelligent systems</span> that
-            move your business forward.
+            We build{" "}
+            <span className="headline-italic text-gradient">
+              intelligent systems
+            </span>{" "}
+            that move your business forward.
           </motion.h1>
 
-          <motion.p
-            variants={item}
-            className="mt-7 max-w-2xl text-lg leading-relaxed text-white/60 md:text-xl"
-          >
-            {site.legalName} is a Dubai-based AI and software consultancy. From
-            generative AI and custom platforms to full digital transformation —
-            we turn ambitious ideas into production-grade reality.
-          </motion.p>
-
+          {/* lead + actions */}
           <motion.div
             variants={item}
-            className="mt-10 flex flex-col gap-3 sm:flex-row sm:items-center"
+            className="mt-12 grid gap-10 lg:grid-cols-[1fr_auto] lg:items-end"
           >
-            <Link href="/contact" className="btn-primary">
-              Start a project
-              <ArrowUpRight className="h-4 w-4" />
-            </Link>
-            <Link href="/services" className="btn-ghost">
-              Explore services
-            </Link>
+            <p className="max-w-xl text-lg leading-relaxed text-white/60">
+              {site.legalName} is a Dubai-based AI and software consultancy. From
+              generative AI and custom platforms to full digital transformation,
+              we turn ambitious ideas into production-grade reality.
+            </p>
+            <div className="flex flex-wrap items-center gap-x-7 gap-y-4">
+              <Link href="/contact" className="btn-primary">
+                Start a project
+                <ArrowUpRight className="h-4 w-4" />
+              </Link>
+              <Link href="/services" className="link-line">
+                Explore services
+              </Link>
+            </div>
           </motion.div>
 
+          {/* sectors masthead */}
           <motion.div
             variants={item}
-            className="mt-14 flex flex-wrap items-center gap-x-8 gap-y-3 text-sm text-white/45"
+            className="mt-14 flex flex-wrap items-center gap-x-8 gap-y-3 border-t border-white/10 pt-6"
           >
-            <span className="font-mono text-xs uppercase tracking-widest text-white/35">
-              Trusted across
-            </span>
-            {["Finance", "Healthcare", "Retail", "Government", "PropTech"].map(
-              (s) => (
-                <span key={s} className="text-white/55">
-                  {s}
-                </span>
-              )
-            )}
+            <span className="index">Trusted across</span>
+            {sectors.map((s) => (
+              <span key={s} className="text-sm text-white/55">
+                {s}
+              </span>
+            ))}
           </motion.div>
         </motion.div>
       </div>

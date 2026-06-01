@@ -23,11 +23,11 @@ export function CtaSection({
               className="absolute inset-0 bg-dots opacity-30"
             />
             <div className="relative">
-              <span className="eyebrow justify-center">
-                <span className="h-1.5 w-1.5 rounded-full bg-accent-cyan shadow-[0_0_12px_2px_rgba(34,211,238,0.6)]" />
+              <span className="index inline-flex items-center justify-center gap-3">
+                <span className="h-px w-8 bg-accent-cyan/60" />
                 Start a project
               </span>
-              <h2 className="mx-auto mt-5 max-w-2xl font-display text-3xl font-semibold leading-tight tracking-tightest text-white text-balance md:text-5xl">
+              <h2 className="headline mx-auto mt-6 max-w-2xl text-[2rem] leading-[1.08] text-white text-balance md:text-5xl">
                 {title}
               </h2>
               <p className="mx-auto mt-5 max-w-xl text-base text-white/55 md:text-lg">

@@ -3,7 +3,7 @@ import { ArrowUpRight, FlaskConical, Plug, ShieldCheck } from "lucide-react";
 import { Hero } from "@/components/sections/hero";
 import { StatsBand } from "@/components/stats-band";
 import { SectionHeading } from "@/components/section-heading";
-import { ServiceCard } from "@/components/service-card";
+import { ServiceLedger } from "@/components/service-ledger";
 import { CaseStudyCard } from "@/components/case-study-card";
 import { InsightCard } from "@/components/insight-card";
 import { ProcessSteps } from "@/components/process-steps";
@@ -11,7 +11,7 @@ import { TechMarquee } from "@/components/marquee";
 import { CtaSection } from "@/components/cta-section";
 import { AmbientBackground } from "@/components/background";
 import { Reveal, RevealGroup, RevealItem } from "@/components/reveal";
-import { services, caseStudies, insights, solutions } from "@/lib/content";
+import { caseStudies, insights, solutions } from "@/lib/content";
 
 export default function HomePage() {
   return (
@@ -41,27 +41,16 @@ export default function HomePage() {
               description="Six core practices that combine to ship intelligent products end to end — strategy, design, data, AI, and engineering under one roof."
             />
             <Reveal delay={0.15}>
-              <Link
-                href="/services"
-                className="group inline-flex items-center gap-1.5 whitespace-nowrap text-sm font-medium text-white/70 transition-colors hover:text-white"
-              >
+              <Link href="/services" className="link-line whitespace-nowrap">
                 All services
-                <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+                <ArrowUpRight className="h-4 w-4" />
               </Link>
             </Reveal>
           </div>
 
-          <RevealGroup className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {services.map((service) => (
-              <RevealItem key={service.slug}>
-                <ServiceCard
-                  service={service}
-                  href={`/services#${service.slug}`}
-                  className="h-full"
-                />
-              </RevealItem>
-            ))}
-          </RevealGroup>
+          <div className="mt-14">
+            <ServiceLedger />
+          </div>
         </div>
       </section>
 
@@ -76,16 +65,20 @@ export default function HomePage() {
             title="Intelligence applied to real problems"
             description="We don't sell technology for its own sake. We build solutions that solve concrete business challenges — and we make them production-ready."
           />
-          <RevealGroup className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {solutions.map((sol) => {
+          <RevealGroup className="mt-16 grid gap-x-10 gap-y-12 text-left sm:grid-cols-2 lg:grid-cols-3">
+            {solutions.map((sol, i) => {
               const Icon = sol.icon;
               return (
                 <RevealItem key={sol.title}>
-                  <div className="glass glass-hover group h-full p-7">
-                    <span className="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-white/10 bg-white/[0.03] text-accent-violet transition-colors duration-500 group-hover:border-accent-violet/40">
-                      <Icon className="h-5 w-5" strokeWidth={1.6} />
-                    </span>
-                    <h3 className="mt-5 font-display text-lg font-semibold tracking-tight text-white">
+                  <div className="group border-t border-white/10 pt-6 transition-colors duration-500 hover:border-accent-violet/50">
+                    <div className="flex items-center justify-between">
+                      <Icon
+                        className="h-5 w-5 text-accent-violet"
+                        strokeWidth={1.6}
+                      />
+                      <span className="index">S/0{i + 1}</span>
+                    </div>
+                    <h3 className="headline mt-5 text-xl text-white">
                       {sol.title}
                     </h3>
                     <p className="mt-2.5 text-sm leading-relaxed text-white/55">
@@ -123,17 +116,14 @@ export default function HomePage() {
               description="No black boxes. Explore how we take AI from idea to a grounded, secure, production-grade system you can trust."
             />
             <Reveal delay={0.15}>
-              <Link
-                href="/approach"
-                className="group inline-flex items-center gap-1.5 whitespace-nowrap text-sm font-medium text-white/70 transition-colors hover:text-white"
-              >
+              <Link href="/approach" className="link-line whitespace-nowrap">
                 Explore our approach
-                <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+                <ArrowUpRight className="h-4 w-4" />
               </Link>
             </Reveal>
           </div>
 
-          <RevealGroup className="mt-12 grid gap-5 md:grid-cols-3">
+          <RevealGroup className="mt-14 grid gap-x-10 gap-y-12 md:grid-cols-3">
             {[
               {
                 icon: FlaskConical,
@@ -159,12 +149,13 @@ export default function HomePage() {
                 <RevealItem key={item.title}>
                   <Link
                     href="/approach"
-                    className="glass glass-hover group flex h-full flex-col p-7"
+                    className="group flex h-full flex-col border-t border-white/15 pt-6 transition-colors duration-500 hover:border-accent-cyan/50"
                   >
-                    <span className="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-white/10 bg-white/[0.03] text-accent-cyan transition-colors duration-500 group-hover:border-accent-cyan/40">
-                      <Icon className="h-5 w-5" strokeWidth={1.6} />
-                    </span>
-                    <h3 className="mt-5 font-display text-lg font-semibold tracking-tight text-white">
+                    <Icon
+                      className="h-5 w-5 text-accent-cyan"
+                      strokeWidth={1.6}
+                    />
+                    <h3 className="headline mt-5 text-xl text-white transition-colors duration-500 group-hover:text-accent-glow">
                       {item.title}
                     </h3>
                     <p className="mt-2.5 text-sm leading-relaxed text-white/55">
@@ -188,17 +179,14 @@ export default function HomePage() {
               description="A few of the products and platforms we've delivered for partners across the region and beyond."
             />
             <Reveal delay={0.15}>
-              <Link
-                href="/work"
-                className="group inline-flex items-center gap-1.5 whitespace-nowrap text-sm font-medium text-white/70 transition-colors hover:text-white"
-              >
+              <Link href="/work" className="link-line whitespace-nowrap">
                 All case studies
-                <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+                <ArrowUpRight className="h-4 w-4" />
               </Link>
             </Reveal>
           </div>
 
-          <RevealGroup className="mt-12 grid gap-5 lg:grid-cols-2">
+          <RevealGroup className="mt-14 grid gap-x-12 gap-y-14 lg:grid-cols-2">
             {caseStudies.slice(0, 2).map((study) => (
               <RevealItem key={study.slug}>
                 <CaseStudyCard study={study} className="h-full" />
@@ -218,17 +206,14 @@ export default function HomePage() {
               description="Field notes on AI, engineering, and digital transformation."
             />
             <Reveal delay={0.15}>
-              <Link
-                href="/insights"
-                className="group inline-flex items-center gap-1.5 whitespace-nowrap text-sm font-medium text-white/70 transition-colors hover:text-white"
-              >
+              <Link href="/insights" className="link-line whitespace-nowrap">
                 All insights
-                <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+                <ArrowUpRight className="h-4 w-4" />
               </Link>
             </Reveal>
           </div>
 
-          <RevealGroup className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+          <RevealGroup className="mt-14 grid gap-x-10 gap-y-12 md:grid-cols-2 lg:grid-cols-3">
             {insights.slice(0, 3).map((insight) => (
               <RevealItem key={insight.slug}>
                 <InsightCard insight={insight} className="h-full" />

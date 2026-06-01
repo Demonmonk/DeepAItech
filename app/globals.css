@@ -69,6 +69,37 @@
     @apply inline-flex items-center gap-2 text-xs font-medium uppercase tracking-[0.2em] text-white/50;
   }
 
+  /* Editorial display serif — the bespoke headline voice */
+  .headline {
+    @apply font-serif font-normal tracking-[-0.01em];
+    font-optical-sizing: auto;
+  }
+  .headline-italic {
+    @apply font-serif font-normal italic;
+  }
+
+  /* Monospace index label, e.g. "(01)" or "S/01" */
+  .index {
+    @apply font-mono text-[0.7rem] uppercase tracking-[0.25em] text-white/35;
+  }
+
+  /* Editorial text link with a wipe underline */
+  .link-line {
+    @apply relative inline-flex items-center gap-1.5 text-sm font-medium text-white/80 transition-colors duration-300 hover:text-white;
+  }
+  .link-line::after {
+    content: "";
+    @apply absolute -bottom-1 left-0 h-px w-full origin-right scale-x-0 bg-white/50 transition-transform duration-500;
+  }
+  .link-line:hover::after {
+    @apply origin-left scale-x-100;
+  }
+
+  /* Hairline rule */
+  .rule {
+    @apply h-px w-full bg-white/10;
+  }
+
   /* Glass card */
   .glass {
     @apply rounded-2xl border border-white/10 bg-white/[0.02] backdrop-blur-sm;

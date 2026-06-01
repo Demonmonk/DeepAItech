@@ -20,13 +20,13 @@ export function PageHeader({
       />
       <div className="container-max relative">
         <Reveal>
-          <span className="eyebrow">
-            <span className="h-1.5 w-1.5 rounded-full bg-accent-cyan shadow-[0_0_12px_2px_rgba(34,211,238,0.6)]" />
+          <span className="index inline-flex items-center gap-3">
+            <span className="h-px w-8 bg-accent-cyan/60" />
             {eyebrow}
           </span>
         </Reveal>
         <Reveal delay={0.05}>
-          <h1 className="mt-5 max-w-4xl font-display text-4xl font-semibold leading-[1.05] tracking-tightest text-white text-balance md:text-6xl">
+          <h1 className="headline mt-6 max-w-4xl text-[2.75rem] leading-[1.02] text-white text-balance md:text-6xl lg:text-[4.25rem]">
             {title}
           </h1>
         </Reveal>
