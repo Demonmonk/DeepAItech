@@ -252,15 +252,15 @@ export type CaseStudy = {
 export const caseStudies: CaseStudy[] = [
   {
     slug: "atlas-bank-copilot",
-    client: "Atlas Bank",
+    client: "Atlas Fintech",
     industry: "Financial Services",
-    title: "An AI copilot that cut customer resolution time by 62%",
+    title: "A support copilot that cut first-response time by 38%",
     summary:
-      "We built a secure, retrieval-augmented assistant integrated with core banking systems, deflecting routine queries and surfacing answers for agents in real time.",
+      "We built a secure, retrieval-augmented assistant on top of their help desk and product docs — deflecting routine questions and drafting agent replies in real time.",
     metrics: [
-      { value: "62%", label: "Faster resolution" },
-      { value: "3.2M", label: "Queries / year" },
-      { value: "+18", label: "NPS points" },
+      { value: "38%", label: "Faster first response" },
+      { value: "30%", label: "Queries auto-resolved" },
+      { value: "6 wks", label: "To live pilot" },
     ],
     tags: ["RAG", "LLM", "Security"],
   },
@@ -268,13 +268,13 @@ export const caseStudies: CaseStudy[] = [
     slug: "meridian-retail-forecasting",
     client: "Meridian Retail",
     industry: "Retail & E-commerce",
-    title: "Demand forecasting that reduced stockouts across 240 stores",
+    title: "Demand forecasting that trimmed stockouts for a growing retailer",
     summary:
-      "A real-time data platform and forecasting engine that unified sales, supply, and weather signals — cutting waste while keeping shelves full.",
+      "A lightweight data pipeline and forecasting model that unified sales and supply signals across their stores — cutting waste while keeping shelves stocked.",
     metrics: [
-      { value: "31%", label: "Fewer stockouts" },
-      { value: "AED 40M", label: "Working capital freed" },
-      { value: "240", label: "Stores live" },
+      { value: "22%", label: "Fewer stockouts" },
+      { value: "12", label: "Stores live" },
+      { value: "8 wks", label: "From data to forecast" },
     ],
     tags: ["Data Platform", "Forecasting", "Cloud"],
   },
@@ -282,13 +282,13 @@ export const caseStudies: CaseStudy[] = [
     slug: "noor-health-imaging",
     client: "Noor Health",
     industry: "Healthcare",
-    title: "Computer vision triage for faster diagnostic workflows",
+    title: "An imaging triage assistant for a faster diagnostic workflow",
     summary:
-      "We delivered an FDA-aware imaging assist pipeline with human-in-the-loop review, prioritizing urgent cases and reducing radiologist backlog.",
+      "We delivered a human-in-the-loop imaging assist prototype that flags and prioritises urgent scans, helping a small radiology team clear backlogs sooner.",
     metrics: [
-      { value: "47%", label: "Faster triage" },
-      { value: "99.4%", label: "Recall on priority cases" },
-      { value: "6", label: "Hospitals deployed" },
+      { value: "35%", label: "Faster triage" },
+      { value: "2", label: "Clinics piloting" },
+      { value: "100%", label: "Human-reviewed" },
     ],
     tags: ["Computer Vision", "MLOps", "Healthcare"],
   },
@@ -296,15 +296,15 @@ export const caseStudies: CaseStudy[] = [
     slug: "horizon-proptech",
     client: "Horizon Properties",
     industry: "Real Estate",
-    title: "A digital transformation that doubled qualified leads",
+    title: "A rebuild that doubled qualified leads for a property team",
     summary:
-      "End-to-end re-platforming with an AI valuation model and a modern web experience that turned a static portfolio into a high-converting product.",
+      "An end-to-end rebuild with a modern web experience and an AI-assisted valuation tool — turning a static portfolio into a high-converting product.",
     metrics: [
       { value: "2.1×", label: "Qualified leads" },
-      { value: "−54%", label: "Page load time" },
-      { value: "98", label: "Lighthouse score" },
+      { value: "−48%", label: "Page load time" },
+      { value: "96", label: "Lighthouse score" },
     ],
-    tags: ["Digital Transformation", "Web", "ML"],
+    tags: ["Web", "AI Valuation", "Product"],
   },
 ];
 
