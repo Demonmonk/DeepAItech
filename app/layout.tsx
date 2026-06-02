@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Inter, Space_Grotesk, JetBrains_Mono, Fraunces } from "next/font/google";
+import { Inter, Archivo, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { site } from "@/lib/site";
 import { Navbar } from "@/components/navbar";
@@ -12,18 +12,11 @@ const inter = Inter({
   display: "swap",
 });
 
-const spaceGrotesk = Space_Grotesk({
+// Bold grotesque display — the confident "consultancy" voice for headlines.
+const archivo = Archivo({
   subsets: ["latin"],
   variable: "--font-display",
   display: "swap",
-});
-
-// Editorial display serif — the "bespoke consultancy" voice for headlines.
-const fraunces = Fraunces({
-  subsets: ["latin"],
-  variable: "--font-serif",
-  display: "swap",
-  style: ["normal", "italic"],
 });
 
 const jetbrains = JetBrains_Mono({
@@ -80,7 +73,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${spaceGrotesk.variable} ${fraunces.variable} ${jetbrains.variable}`}
+      className={`${inter.variable} ${archivo.variable} ${jetbrains.variable}`}
     >
       <body>
         <a

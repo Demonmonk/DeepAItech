@@ -101,7 +101,7 @@ export function ChatWidget() {
         initial={false}
         whileHover={reduce ? undefined : { scale: 1.05 }}
         whileTap={reduce ? undefined : { scale: 0.95 }}
-        className="fixed bottom-5 right-5 z-[60] inline-flex h-14 w-14 items-center justify-center rounded-full bg-white text-ink shadow-[0_0_40px_-8px_rgba(34,211,238,0.7)] transition-colors hover:bg-accent-glow md:bottom-6 md:right-6"
+        className="fixed bottom-5 right-5 z-[60] inline-flex h-14 w-14 items-center justify-center rounded-full bg-white text-ink shadow-[0_0_40px_-8px_rgba(204,255,0,0.7)] transition-colors hover:bg-accent-glow md:bottom-6 md:right-6"
       >
         <AnimatePresence mode="wait" initial={false}>
           {open ? (
@@ -150,7 +150,7 @@ export function ChatWidget() {
                   Deep AI Tech assistant
                 </p>
                 <p className="flex items-center gap-1.5 text-xs text-white/45">
-                  <span className="h-1.5 w-1.5 rounded-full bg-accent-cyan shadow-[0_0_8px_2px_rgba(34,211,238,0.6)]" />
+                  <span className="h-1.5 w-1.5 rounded-full bg-accent-cyan shadow-[0_0_8px_2px_rgba(204,255,0,0.6)]" />
                   Online · business questions only
                 </p>
               </div>

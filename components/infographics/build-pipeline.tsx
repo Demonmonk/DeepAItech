@@ -46,7 +46,7 @@ export function BuildPipeline() {
                   className={cn(
                     "relative z-10 inline-flex h-14 w-14 items-center justify-center rounded-full border bg-ink-800 transition-all duration-300",
                     isActive
-                      ? "border-accent-cyan/60 text-white shadow-[0_0_30px_-6px_rgba(34,211,238,0.7)]"
+                      ? "border-accent-cyan/60 text-white shadow-[0_0_30px_-6px_rgba(204,255,0,0.7)]"
                       : isDone
                         ? "border-accent-violet/40 text-white/80"
                         : "border-white/10 text-white/40 group-hover:border-white/25 group-hover:text-white/70"

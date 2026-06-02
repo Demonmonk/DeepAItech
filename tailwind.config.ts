@@ -9,7 +9,7 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // Quantum Black palette
+        // Quantum Black palette — black/white with ONE acid-lime accent
         ink: {
           DEFAULT: "#050506",
           900: "#080809",
@@ -19,15 +19,17 @@ const config: Config = {
           500: "#23232c",
         },
         accent: {
-          DEFAULT: "#22d3ee", // electric cyan
-          cyan: "#22d3ee",
-          violet: "#8b5cf6",
-          glow: "#67e8f9",
+          DEFAULT: "#ccff00", // acid lime
+          lime: "#ccff00",
+          // legacy aliases remapped to the lime family so existing
+          // utility classes (accent-cyan/violet/glow) pick up the new accent
+          cyan: "#ccff00",
+          violet: "#aef03a",
+          glow: "#d8ff5c",
         },
       },
       fontFamily: {
         display: ["var(--font-display)", "system-ui", "sans-serif"],
-        serif: ["var(--font-serif)", "Georgia", "Cambria", "serif"],
         sans: ["var(--font-sans)", "system-ui", "sans-serif"],
         mono: ["var(--font-mono)", "ui-monospace", "monospace"],
       },
@@ -40,8 +42,7 @@ const config: Config = {
       backgroundImage: {
         "grid-fade":
           "linear-gradient(to bottom, transparent, rgba(5,5,6,0.9))",
-        "accent-gradient":
-          "linear-gradient(120deg, #22d3ee 0%, #8b5cf6 100%)",
+        "accent-gradient": "linear-gradient(120deg, #ccff00 0%, #aef03a 100%)",
       },
       keyframes: {
         "fade-up": {

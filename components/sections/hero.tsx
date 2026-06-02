@@ -4,8 +4,9 @@ import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import { site } from "@/lib/site";
+import { FlowField } from "@/components/sections/flow-field";
 
-const ease = [0.16, 1, 0.3, 1] as const;
+const easing = [0.16, 1, 0.3, 1] as const;
 const sectors = ["Finance", "Healthcare", "Retail", "Government", "PropTech"];
 
 export function Hero() {
@@ -13,51 +14,54 @@ export function Hero() {
 
   const wrap = {
     hidden: {},
-    show: { transition: { staggerChildren: 0.08, delayChildren: 0.1 } },
+    show: { transition: { staggerChildren: 0.09, delayChildren: 0.15 } },
   };
-  const line = {
+  const lineV = {
     hidden: reduce ? {} : { y: "115%" },
-    show: { y: 0, transition: { duration: 0.95, ease } },
+    show: { y: 0, transition: { duration: 1, ease: easing } },
   };
   const fade = {
     hidden: reduce ? {} : { opacity: 0, y: 16 },
-    show: { opacity: 1, y: 0, transition: { duration: 0.8, ease } },
+    show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: easing } },
   };
 
   return (
-    <section className="relative flex min-h-[96vh] items-center overflow-hidden pt-32">
-      <HeroVisual reduce={!!reduce} />
+    <section className="relative flex min-h-[100svh] items-center overflow-hidden pt-28">
+      {/* generative data-art */}
+      <div className="absolute inset-0">
+        <FlowField />
+        {/* legibility masks */}
+        <div className="absolute inset-0 bg-gradient-to-r from-ink via-ink/55 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-b from-ink/60 via-transparent to-ink" />
+      </div>
 
-      <div className="container-max relative">
+      <div className="container-max relative z-10">
         <motion.div variants={wrap} initial="hidden" animate="show">
           {/* masthead */}
           <motion.div
             variants={fade}
-            className="flex items-center justify-between border-b border-white/10 pb-5"
+            className="flex items-center gap-3 border-b border-white/10 pb-5"
           >
+            <span className="h-2 w-2 rounded-full bg-accent shadow-[0_0_14px_2px_rgba(204,255,0,0.8)]" />
             <span className="index">
               {site.name} — AI &amp; Software Consultancy
             </span>
-            <span className="index hidden sm:block">
+            <span className="index ml-auto hidden sm:block">
               Est. {site.founded} · {site.location}
             </span>
           </motion.div>
 
-          {/* headline — line-masked reveal */}
-          <h1 className="headline mt-10 max-w-[60rem] text-[2.9rem] leading-[1.0] text-white sm:text-6xl lg:text-[5.4rem]">
-            {[
-              <>We build</>,
-              <span key="2" className="headline-italic text-gradient">
-                intelligent systems
-              </span>,
-              <>that move your business forward.</>,
-            ].map((content, i) => (
-              <span key={i} className="block overflow-hidden pb-[0.12em]">
-                <motion.span variants={line} className="block">
-                  {content}
-                </motion.span>
-              </span>
-            ))}
+          {/* headline */}
+          <h1 className="headline mt-10 max-w-[64rem] text-[2.9rem] font-extrabold uppercase leading-[0.94] text-white sm:text-7xl lg:text-[5.7rem]">
+            {["We build intelligent", "systems that move", "your business forward."].map(
+              (l, i) => (
+                <span key={i} className="block overflow-hidden pb-[0.08em]">
+                  <motion.span variants={lineV} className="block">
+                    {l}
+                  </motion.span>
+                </span>
+              )
+            )}
           </h1>
 
           {/* lead + actions */}
@@ -65,10 +69,10 @@ export function Hero() {
             variants={fade}
             className="mt-12 grid gap-10 lg:grid-cols-[1fr_auto] lg:items-end"
           >
-            <p className="max-w-xl text-lg leading-relaxed text-white/60">
-              {site.legalName} is a Dubai-based AI and software consultancy. From
-              generative AI and custom platforms to full digital transformation,
-              we turn ambitious ideas into production-grade reality.
+            <p className="max-w-xl text-lg leading-relaxed text-white/65">
+              {site.legalName} is a Dubai-based AI and software consultancy. We
+              turn ambitious ideas into production-grade reality — from
+              generative AI and custom platforms to full digital transformation.
             </p>
             <div className="flex flex-wrap items-center gap-x-7 gap-y-4">
               <Link href="/contact" className="btn-primary">
@@ -81,7 +85,7 @@ export function Hero() {
             </div>
           </motion.div>
 
-          {/* sectors masthead */}
+          {/* sectors */}
           <motion.div
             variants={fade}
             className="mt-14 flex flex-wrap items-center gap-x-8 gap-y-3 border-t border-white/10 pt-6"
@@ -107,93 +111,5 @@ export function Hero() {
         </motion.div>
       </div>
     </section>
-  );
-}
-
-/** Refined orbital system — concentric rings, a dashed ring, and orbiting nodes. */
-function OrbitNode({
-  radius,
-  dur,
-  dir = 1,
-  reduce,
-  className,
-}: {
-  radius: number;
-  dur: number;
-  dir?: number;
-  reduce: boolean;
-  className: string;
-}) {
-  return (
-    <motion.div
-      className="absolute left-1/2 top-1/2 h-0 w-0"
-      animate={reduce ? undefined : { rotate: 360 * dir }}
-      transition={{ duration: dur, repeat: Infinity, ease: "linear" }}
-    >
-      <span
-        className={className}
-        style={{ transform: `translate(${radius}px, -50%)` }}
-      />
-    </motion.div>
-  );
-}
-
-function HeroVisual({ reduce }: { reduce: boolean }) {
-  return (
-    <div
-      aria-hidden
-      className="pointer-events-none absolute inset-0 -z-10 overflow-hidden"
-    >
-      {/* core glow */}
-      <div className="absolute right-[6%] top-1/2 h-[460px] w-[460px] -translate-y-1/2 rounded-full bg-accent-cyan/15 blur-[130px]" />
-      <div className="absolute right-[2%] top-[38%] h-[320px] w-[320px] rounded-full bg-accent-violet/15 blur-[130px]" />
-
-      {/* ring system */}
-      <div className="absolute right-[2%] top-1/2 -translate-y-1/2 lg:right-[8%]">
-        <div className="relative h-[300px] w-[300px] sm:h-[440px] sm:w-[440px] lg:h-[560px] lg:w-[560px]">
-          {[0.55, 0.78, 1].map((s, i) => (
-            <div
-              key={i}
-              className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full border border-white/[0.07]"
-              style={{ width: `${s * 100}%`, height: `${s * 100}%` }}
-            />
-          ))}
-
-          {/* dashed rotating ring */}
-          <svg
-            viewBox="0 0 100 100"
-            className={`absolute inset-0 h-full w-full ${reduce ? "" : "spin-slow"}`}
-          >
-            <circle
-              cx="50"
-              cy="50"
-              r="39"
-              fill="none"
-              strokeDasharray="0.5 3"
-              strokeWidth="0.3"
-              className="stroke-white/30"
-            />
-          </svg>
-
-          {/* center node */}
-          <span className="absolute left-1/2 top-1/2 h-3 w-3 -translate-x-1/2 -translate-y-1/2 rounded-full bg-accent-glow shadow-[0_0_24px_6px_rgba(103,232,249,0.7)]" />
-
-          {/* orbiting nodes */}
-          <OrbitNode
-            radius={reduce ? 0 : 152}
-            dur={20}
-            reduce={reduce}
-            className="block h-2.5 w-2.5 rounded-full bg-accent-cyan shadow-[0_0_18px_4px_rgba(34,211,238,0.7)]"
-          />
-          <OrbitNode
-            radius={reduce ? 0 : 108}
-            dur={14}
-            dir={-1}
-            reduce={reduce}
-            className="block h-1.5 w-1.5 rounded-full bg-accent-violet shadow-[0_0_14px_3px_rgba(139,92,246,0.7)]"
-          />
-        </div>
-      </div>
-    </div>
   );
 }
