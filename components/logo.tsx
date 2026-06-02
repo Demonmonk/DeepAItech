@@ -17,8 +17,8 @@ export function Logo({ className = "" }: { className?: string }) {
         >
           <defs>
             <linearGradient id="logo-grad" x1="0" y1="0" x2="32" y2="32">
-              <stop offset="0%" stopColor="#ccff00" />
-              <stop offset="100%" stopColor="#aef03a" />
+              <stop offset="0%" stopColor="#1ff0c0" />
+              <stop offset="100%" stopColor="#15c9a0" />
             </linearGradient>
           </defs>
           <rect

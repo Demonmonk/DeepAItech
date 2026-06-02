@@ -5,107 +5,126 @@ import { useReducedMotion } from "framer-motion";
 
 /**
  * Generative "data as art" — particles drift through a flowing noise field,
- * leaving faint lime trails on black. Canvas + rAF, no dependencies.
- * Respects reduced-motion (renders a single calm frame instead of animating).
+ * leaving glowing cyan-green trails on black. Additive blending for bloom;
+ * the field parts and swirls around the cursor. Canvas + rAF, no deps.
+ * Respects reduced-motion (renders one calm static frame).
  */
 export function FlowField() {
   const ref = useRef<HTMLCanvasElement>(null);
   const reduce = useReducedMotion();
 
   useEffect(() => {
-    const canvas = ref.current;
-    if (!canvas) return;
-    const ctx = canvas.getContext("2d");
-    if (!ctx) return;
+    const el = ref.current;
+    if (!el) return;
+    const c = el.getContext("2d", { alpha: false });
+    if (!c) return;
 
     const dpr = Math.min(window.devicePixelRatio || 1, 2);
     let w = 0;
     let h = 0;
     let raf = 0;
     let particles: { x: number; y: number; life: number }[] = [];
+    const mouse = { x: -9999, y: -9999, active: false };
 
     const spawn = () => ({
       x: Math.random() * w,
       y: Math.random() * h,
-      life: Math.random() * 200,
+      life: 60 + Math.random() * 240,
     });
 
     function resize() {
-      const parent = canvas!.parentElement;
+      const parent = el!.parentElement;
       w = parent ? parent.clientWidth : window.innerWidth;
       h = parent ? parent.clientHeight : window.innerHeight;
-      canvas!.width = Math.floor(w * dpr);
-      canvas!.height = Math.floor(h * dpr);
-      canvas!.style.width = `${w}px`;
-      canvas!.style.height = `${h}px`;
-      ctx!.setTransform(dpr, 0, 0, dpr, 0, 0);
-      const count = Math.min(1100, Math.floor((w * h) / 1500));
+      el!.width = Math.floor(w * dpr);
+      el!.height = Math.floor(h * dpr);
+      el!.style.width = `${w}px`;
+      el!.style.height = `${h}px`;
+      c!.setTransform(dpr, 0, 0, dpr, 0, 0);
+      const count = Math.min(1700, Math.floor((w * h) / 1000));
       particles = new Array(count).fill(0).map(spawn);
-      ctx!.fillStyle = "#050506";
-      ctx!.fillRect(0, 0, w, h);
+      c!.fillStyle = "#050506";
+      c!.fillRect(0, 0, w, h);
     }
 
-    // Smooth flowing angle field (cheap layered trig instead of Perlin).
+    // Smooth flowing angle field (layered trig ≈ curl noise).
     const field = (x: number, y: number, t: number) =>
-      (Math.sin(x * 0.0022 + t * 0.00016) +
-        Math.cos(y * 0.0027 - t * 0.00011) +
-        Math.sin((x + y) * 0.0015 + t * 0.00007)) *
+      (Math.sin(x * 0.0021 + t * 0.00015) +
+        Math.cos(y * 0.0026 - t * 0.0001) +
+        Math.sin((x + y) * 0.0014 + t * 0.00006)) *
       1.5;
 
+    const R = 160;
+    const R2 = R * R;
+
     function frame(t: number) {
-      // gentle fade for trails
-      ctx!.fillStyle = "rgba(5,5,6,0.055)";
-      ctx!.fillRect(0, 0, w, h);
-      ctx!.lineWidth = 1.2;
+      // fade previous frame (trails)
+      c!.globalCompositeOperation = "source-over";
+      c!.fillStyle = "rgba(5,6,7,0.045)";
+      c!.fillRect(0, 0, w, h);
+      // additive glow for the strokes
+      c!.globalCompositeOperation = "lighter";
+      c!.lineWidth = 1.25;
       for (const p of particles) {
         const a = field(p.x, p.y, t);
-        const nx = p.x + Math.cos(a) * 1.6;
-        const ny = p.y + Math.sin(a) * 1.6;
-        // brighter where the field is steeper → subtle depth
-        const alpha = 0.22 + (Math.abs(Math.sin(a)) * 0.45);
-        ctx!.strokeStyle = `rgba(204,255,0,${alpha.toFixed(3)})`;
-        ctx!.beginPath();
-        ctx!.moveTo(p.x, p.y);
-        ctx!.lineTo(nx, ny);
-        ctx!.stroke();
+        let vx = Math.cos(a) * 1.6;
+        let vy = Math.sin(a) * 1.6;
+        if (mouse.active) {
+          const dx = p.x - mouse.x;
+          const dy = p.y - mouse.y;
+          const d2 = dx * dx + dy * dy;
+          if (d2 < R2) {
+            const d = Math.sqrt(d2) || 1;
+            const f = (1 - d / R) * 3.4; // push away from cursor
+            vx += (dx / d) * f;
+            vy += (dy / d) * f;
+          }
+        }
+        const nx = p.x + vx;
+        const ny = p.y + vy;
+        const speed = Math.min(1, (Math.abs(vx) + Math.abs(vy)) / 4.5);
+        c!.strokeStyle = `rgba(31,240,192,${(0.13 + speed * 0.42).toFixed(3)})`;
+        c!.beginPath();
+        c!.moveTo(p.x, p.y);
+        c!.lineTo(nx, ny);
+        c!.stroke();
         p.x = nx;
         p.y = ny;
         p.life -= 1;
-        if (
-          p.life < 0 ||
-          p.x < -10 ||
-          p.x > w + 10 ||
-          p.y < -10 ||
-          p.y > h + 10
-        ) {
+        if (p.life < 0 || nx < -10 || nx > w + 10 || ny < -10 || ny > h + 10) {
           Object.assign(p, spawn());
         }
       }
       raf = requestAnimationFrame(frame);
     }
 
+    function onMove(e: PointerEvent) {
+      const r = el!.getBoundingClientRect();
+      mouse.x = e.clientX - r.left;
+      mouse.y = e.clientY - r.top;
+      mouse.active = mouse.x > 0 && mouse.x < w && mouse.y > 0 && mouse.y < h;
+    }
+
     resize();
     window.addEventListener("resize", resize);
 
     if (reduce) {
-      // one calm static frame — faint scattered points
-      ctx.fillStyle = "rgba(204,255,0,0.28)";
-      for (const p of particles) ctx.fillRect(p.x, p.y, 1.2, 1.2);
+      c.globalCompositeOperation = "lighter";
+      c.fillStyle = "rgba(31,240,192,0.26)";
+      for (const p of particles) c.fillRect(p.x, p.y, 1.2, 1.2);
     } else {
+      window.addEventListener("pointermove", onMove);
       raf = requestAnimationFrame(frame);
     }
 
     return () => {
       cancelAnimationFrame(raf);
       window.removeEventListener("resize", resize);
+      window.removeEventListener("pointermove", onMove);
     };
   }, [reduce]);
 
   return (
-    <canvas
-      ref={ref}
-      className="absolute inset-0 h-full w-full"
-      aria-hidden
-    />
+    <canvas ref={ref} className="absolute inset-0 h-full w-full" aria-hidden />
   );
 }

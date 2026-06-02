@@ -6,6 +6,7 @@ import { AmbientBackground } from "@/components/background";
 import { CtaSection } from "@/components/cta-section";
 import { Reveal, RevealGroup, RevealItem } from "@/components/reveal";
 import { Sparkline } from "@/components/infographics/sparkline";
+import { CountUp } from "@/components/count-up";
 import { caseStudies } from "@/lib/content";
 
 export function generateStaticParams() {
@@ -77,7 +78,7 @@ export default function CaseStudyPage({
               {study.metrics.map((m) => (
                 <div key={m.label} className="bg-ink-900 p-7 text-center">
                   <div className="headline text-4xl text-gradient-accent md:text-5xl">
-                    {m.value}
+                    <CountUp value={m.value} />
                   </div>
                   <Sparkline
                     seed={study.slug + m.label}

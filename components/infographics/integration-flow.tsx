@@ -24,13 +24,13 @@ export function IntegrationFlow() {
         >
           <defs>
             <linearGradient id="flowGrad" x1="0" y1="0" x2="820" y2="0">
-              <stop offset="0%" stopColor="#ccff00" />
-              <stop offset="100%" stopColor="#aef03a" />
+              <stop offset="0%" stopColor="#1ff0c0" />
+              <stop offset="100%" stopColor="#15c9a0" />
             </linearGradient>
             <radialGradient id="coreGrad" cx="50%" cy="50%" r="50%">
-              <stop offset="0%" stopColor="#d8ff5c" />
-              <stop offset="55%" stopColor="#ccff00" />
-              <stop offset="100%" stopColor="#aef03a" />
+              <stop offset="0%" stopColor="#86ffe0" />
+              <stop offset="55%" stopColor="#1ff0c0" />
+              <stop offset="100%" stopColor="#15c9a0" />
             </radialGradient>
             <filter id="soft" x="-60%" y="-60%" width="220%" height="220%">
               <feGaussianBlur stdDeviation="10" />

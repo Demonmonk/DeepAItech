@@ -8,8 +8,8 @@ function Frame({ children }: { children: React.ReactNode }) {
     <svg viewBox="0 0 48 48" className="h-12 w-12" fill="none" aria-hidden>
       <defs>
         <linearGradient id="sol" x1="0" y1="0" x2="48" y2="48">
-          <stop offset="0%" stopColor="#ccff00" />
-          <stop offset="100%" stopColor="#aef03a" />
+          <stop offset="0%" stopColor="#1ff0c0" />
+          <stop offset="100%" stopColor="#15c9a0" />
         </linearGradient>
       </defs>
       {children}

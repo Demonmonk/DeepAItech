@@ -51,8 +51,8 @@ export function AssuranceOrbit() {
           ))}
           <defs>
             <linearGradient id="orbitGrad" x1="0" y1="0" x2="100" y2="100">
-              <stop offset="0%" stopColor="#ccff00" />
-              <stop offset="100%" stopColor="#aef03a" />
+              <stop offset="0%" stopColor="#1ff0c0" />
+              <stop offset="100%" stopColor="#15c9a0" />
             </linearGradient>
           </defs>
         </svg>
@@ -100,7 +100,7 @@ export function AssuranceOrbit() {
                 className={cn(
                   "flex h-12 w-12 items-center justify-center rounded-full border bg-ink-800 transition-all duration-300",
                   isActive
-                    ? "border-accent-cyan/70 text-white shadow-[0_0_26px_-4px_rgba(204,255,0,0.8)]"
+                    ? "border-accent-cyan/70 text-white shadow-[0_0_26px_-4px_rgba(31,240,192,0.8)]"
                     : "border-white/12 text-white/45 hover:border-white/30 hover:text-white/80"
                 )}
               >

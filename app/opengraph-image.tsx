@@ -20,7 +20,7 @@ export default function OpengraphImage() {
           fontFamily: "sans-serif",
           backgroundColor: "#050506",
           backgroundImage:
-            "radial-gradient(900px circle at 100% 0%, rgba(204,255,0,0.22), transparent 55%), radial-gradient(700px circle at 0% 100%, rgba(174,240,58,0.20), transparent 55%)",
+            "radial-gradient(900px circle at 100% 0%, rgba(31,240,192,0.22), transparent 55%), radial-gradient(700px circle at 0% 100%, rgba(21,201,160,0.20), transparent 55%)",
         }}
       >
         <div
@@ -38,7 +38,7 @@ export default function OpengraphImage() {
               width: 16,
               height: 16,
               borderRadius: 999,
-              backgroundColor: "#ccff00",
+              backgroundColor: "#1ff0c0",
             }}
           />
           DEEP AI TECH

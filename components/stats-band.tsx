@@ -1,4 +1,5 @@
 import { stats } from "@/lib/content";
+import { CountUp } from "@/components/count-up";
 import { RevealGroup, RevealItem } from "@/components/reveal";
 
 export function StatsBand() {
@@ -12,7 +13,7 @@ export function StatsBand() {
               className="md:px-9 md:first:pl-0 md:last:pr-0"
             >
               <div className="headline text-5xl leading-none text-white md:text-[3.5rem]">
-                {stat.value}
+                <CountUp value={stat.value} />
               </div>
               <div className="mt-4 text-sm leading-snug text-white/50">
                 {stat.label}

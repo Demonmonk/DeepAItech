@@ -1,7 +1,13 @@
 "use client";
 
 import Link from "next/link";
-import { motion, useReducedMotion } from "framer-motion";
+import { useRef } from "react";
+import {
+  motion,
+  useReducedMotion,
+  useScroll,
+  useTransform,
+} from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import { site } from "@/lib/site";
 import { FlowField } from "@/components/sections/flow-field";
@@ -11,6 +17,13 @@ const sectors = ["Finance", "Healthcare", "Retail", "Government", "PropTech"];
 
 export function Hero() {
   const reduce = useReducedMotion();
+  const sectionRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start start", "end start"],
+  });
+  const artY = useTransform(scrollYProgress, [0, 1], [0, 140]);
+  const artOpacity = useTransform(scrollYProgress, [0, 1], [1, 0.12]);
 
   const wrap = {
     hidden: {},
@@ -26,14 +39,17 @@ export function Hero() {
   };
 
   return (
-    <section className="relative flex min-h-[100svh] items-center overflow-hidden pt-28">
+    <section
+      ref={sectionRef}
+      className="relative flex min-h-[100svh] items-center overflow-hidden pt-28"
+    >
       {/* generative data-art */}
-      <div className="absolute inset-0">
+      <motion.div style={{ y: artY, opacity: artOpacity }} className="absolute inset-0">
         <FlowField />
         {/* legibility masks */}
-        <div className="absolute inset-0 bg-gradient-to-r from-ink via-ink/55 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-r from-ink via-ink/45 to-transparent" />
         <div className="absolute inset-0 bg-gradient-to-b from-ink/60 via-transparent to-ink" />
-      </div>
+      </motion.div>
 
       <div className="container-max relative z-10">
         <motion.div variants={wrap} initial="hidden" animate="show">
@@ -42,7 +58,7 @@ export function Hero() {
             variants={fade}
             className="flex items-center gap-3 border-b border-white/10 pb-5"
           >
-            <span className="h-2 w-2 rounded-full bg-accent shadow-[0_0_14px_2px_rgba(204,255,0,0.8)]" />
+            <span className="h-2 w-2 rounded-full bg-accent shadow-[0_0_14px_2px_rgba(31,240,192,0.8)]" />
             <span className="index">
               {site.name} — AI &amp; Software Consultancy
             </span>

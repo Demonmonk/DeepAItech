@@ -2,6 +2,7 @@ import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import type { CaseStudy } from "@/lib/content";
 import { Sparkline } from "@/components/infographics/sparkline";
+import { CountUp } from "@/components/count-up";
 import { cn } from "@/lib/utils";
 
 export function CaseStudyCard({
@@ -39,7 +40,7 @@ export function CaseStudyCard({
         {study.metrics.map((m) => (
           <div key={m.label}>
             <div className="headline text-2xl text-gradient-accent md:text-[1.7rem]">
-              {m.value}
+              <CountUp value={m.value} />
             </div>
             <Sparkline
               seed={study.slug + m.label}

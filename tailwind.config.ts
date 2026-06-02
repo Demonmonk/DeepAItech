@@ -19,13 +19,12 @@ const config: Config = {
           500: "#23232c",
         },
         accent: {
-          DEFAULT: "#ccff00", // acid lime
-          lime: "#ccff00",
-          // legacy aliases remapped to the lime family so existing
-          // utility classes (accent-cyan/violet/glow) pick up the new accent
-          cyan: "#ccff00",
-          violet: "#aef03a",
-          glow: "#d8ff5c",
+          DEFAULT: "#1ff0c0", // electric cyan-green
+          // aliases all resolve to the cyan-green family so existing
+          // utility classes (accent-cyan/violet/glow) pick up the accent
+          cyan: "#1ff0c0",
+          violet: "#15c9a0",
+          glow: "#86ffe0",
         },
       },
       fontFamily: {
@@ -42,7 +41,7 @@ const config: Config = {
       backgroundImage: {
         "grid-fade":
           "linear-gradient(to bottom, transparent, rgba(5,5,6,0.9))",
-        "accent-gradient": "linear-gradient(120deg, #ccff00 0%, #aef03a 100%)",
+        "accent-gradient": "linear-gradient(120deg, #1ff0c0 0%, #15c9a0 100%)",
       },
       keyframes: {
         "fade-up": {

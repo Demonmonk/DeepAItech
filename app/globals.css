@@ -26,7 +26,7 @@
   }
 
   ::selection {
-    background: rgba(204,255,0, 0.3);
+    background: rgba(31,240,192, 0.3);
     color: #050506;
   }
 
@@ -55,11 +55,11 @@
 
   /* Accent emphasis — a single acid-lime, no gradients */
   .text-gradient {
-    color: #ccff00;
+    color: #1ff0c0;
   }
 
   .text-gradient-accent {
-    color: #ccff00;
+    color: #1ff0c0;
   }
 
   /* Eyebrow / label */
@@ -108,7 +108,7 @@
 
   /* Primary button — acid lime on black */
   .btn-primary {
-    @apply inline-flex items-center justify-center gap-2 rounded-full bg-accent px-6 py-3 text-sm font-semibold text-ink transition-all duration-300 hover:bg-accent-glow hover:shadow-[0_0_40px_-8px_rgba(204,255,0,0.7)];
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-accent px-6 py-3 text-sm font-semibold text-ink transition-all duration-300 hover:bg-accent-glow hover:shadow-[0_0_40px_-8px_rgba(31,240,192,0.7)];
   }
 
   .btn-ghost {
@@ -146,7 +146,7 @@
     inset: 0;
     border-radius: inherit;
     padding: 1px;
-    background: linear-gradient(120deg, rgba(204,255,0, 0.5), rgba(174,240,58, 0.5), transparent 60%);
+    background: linear-gradient(120deg, rgba(31,240,192, 0.5), rgba(21,201,160, 0.5), transparent 60%);
     -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     -webkit-mask-composite: xor;
     mask-composite: exclude;
