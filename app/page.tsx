@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ArrowUpRight, FlaskConical, Plug, ShieldCheck } from "lucide-react";
 import { Hero } from "@/components/sections/hero";
+import { LiveNetwork } from "@/components/sections/live-network";
 import { StatsBand } from "@/components/stats-band";
 import { SectionHeading } from "@/components/section-heading";
 import { ServiceLedger } from "@/components/service-ledger";
@@ -56,6 +57,25 @@ export default function HomePage() {
       </section>
 
       <StatsBand />
+
+      {/* Live connections */}
+      <section className="relative overflow-hidden border-y border-white/10 bg-ink-900/40 py-24 md:py-32">
+        <div
+          aria-hidden
+          className="pointer-events-none absolute left-1/2 top-1/2 h-[36rem] w-[36rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-accent/[0.06] blur-[120px]"
+        />
+        <div className="container-max relative">
+          <SectionHeading
+            align="center"
+            eyebrow="Connected, in real time"
+            title="It plugs into everything you run"
+            description="We wire AI into the systems your work already lives in — CRMs, data warehouses, documents, and tools — so intelligence flows where it's needed, the moment it's needed."
+          />
+          <div className="mt-10">
+            <LiveNetwork />
+          </div>
+        </div>
+      </section>
 
       {/* Solutions */}
       <section className="relative py-24 md:py-32">
