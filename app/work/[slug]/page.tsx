@@ -5,6 +5,7 @@ import { ArrowLeft, ArrowUpRight, Target, Compass, Boxes, TrendingUp } from "luc
 import { AmbientBackground } from "@/components/background";
 import { CtaSection } from "@/components/cta-section";
 import { Reveal, RevealGroup, RevealItem } from "@/components/reveal";
+import { Sparkline } from "@/components/infographics/sparkline";
 import { caseStudies } from "@/lib/content";
 
 export function generateStaticParams() {
@@ -75,10 +76,14 @@ export default function CaseStudyPage({
             <div className="mt-10 grid grid-cols-1 gap-px overflow-hidden rounded-2xl border border-white/10 bg-white/[0.06] sm:grid-cols-3">
               {study.metrics.map((m) => (
                 <div key={m.label} className="bg-ink-900 p-7 text-center">
-                  <div className="font-display text-3xl font-semibold text-gradient-accent md:text-4xl">
+                  <div className="headline text-4xl text-gradient-accent md:text-5xl">
                     {m.value}
                   </div>
-                  <div className="mt-2 text-sm text-white/50">{m.label}</div>
+                  <Sparkline
+                    seed={study.slug + m.label}
+                    className="mx-auto mt-3 h-7 w-24"
+                  />
+                  <div className="mt-3 text-sm text-white/50">{m.label}</div>
                 </div>
               ))}
             </div>

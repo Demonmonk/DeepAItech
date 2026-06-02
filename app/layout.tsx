@@ -93,6 +93,7 @@ export default function RootLayout({
         <main id="main">{children}</main>
         <Footer />
         <ChatWidget />
+        <div className="grain" aria-hidden />
       </body>
     </html>
   );

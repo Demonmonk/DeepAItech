@@ -1,11 +1,17 @@
 /**
  * Custom animated spot-illustrations, one per service. Pure SVG + CSS
- * (reduced-motion safe). Rendered at ~64px inside each service entry.
+ * (reduced-motion safe). Default ~64px; pass `className` to resize.
  */
 
-function Frame({ children }: { children: React.ReactNode }) {
+function Frame({
+  children,
+  className = "h-16 w-16",
+}: {
+  children: React.ReactNode;
+  className?: string;
+}) {
   return (
-    <svg viewBox="0 0 64 64" className="h-16 w-16" fill="none" aria-hidden>
+    <svg viewBox="0 0 64 64" className={className} fill="none" aria-hidden>
       <defs>
         <linearGradient id="sg" x1="0" y1="0" x2="64" y2="64">
           <stop offset="0%" stopColor="#22d3ee" />
@@ -17,6 +23,8 @@ function Frame({ children }: { children: React.ReactNode }) {
   );
 }
 
+type GlyphProps = { className?: string };
+
 const nodes = [
   [16, 18],
   [50, 16],
@@ -24,9 +32,9 @@ const nodes = [
   [48, 50],
 ] as const;
 
-function GlyphAI() {
+function GlyphAI({ className }: GlyphProps) {
   return (
-    <Frame>
+    <Frame className={className}>
       {nodes.map(([x, y], i) => (
         <line
           key={i}
@@ -50,9 +58,9 @@ function GlyphAI() {
   );
 }
 
-function GlyphSoftware() {
+function GlyphSoftware({ className }: GlyphProps) {
   return (
-    <Frame>
+    <Frame className={className}>
       {[14, 28, 42].map((y, i) => (
         <g key={y} className="floaty" style={{ animationDelay: `${i * 0.25}s` }}>
           <rect
@@ -71,9 +79,9 @@ function GlyphSoftware() {
   );
 }
 
-function GlyphWeb() {
+function GlyphWeb({ className }: GlyphProps) {
   return (
-    <Frame>
+    <Frame className={className}>
       <rect x="12" y="14" width="40" height="32" rx="4" className="fill-white/[0.03] stroke-white/20" strokeWidth="1.4" />
       <line x1="12" y1="23" x2="52" y2="23" className="stroke-white/20" strokeWidth="1.4" />
       <circle cx="17" cy="18.5" r="1.3" className="fill-accent-cyan" />
@@ -86,9 +94,9 @@ function GlyphWeb() {
   );
 }
 
-function GlyphTransform() {
+function GlyphTransform({ className }: GlyphProps) {
   return (
-    <Frame>
+    <Frame className={className}>
       <g className="spin-slow">
         <path d="M32,14 a18,18 0 0 1 16,10" stroke="url(#sg)" strokeWidth="2" strokeLinecap="round" />
         <path d="M48,24 l0,-7 M48,24 l-7,0" className="stroke-accent-violet" strokeWidth="2" strokeLinecap="round" />
@@ -100,7 +108,7 @@ function GlyphTransform() {
   );
 }
 
-function GlyphData() {
+function GlyphData({ className }: GlyphProps) {
   const bars = [
     [18, 30, "fill-white/25"],
     [27, 18, "fill-accent-cyan/70"],
@@ -108,7 +116,7 @@ function GlyphData() {
     [45, 12, "fill-accent-violet/70"],
   ] as const;
   return (
-    <Frame>
+    <Frame className={className}>
       <line x1="14" y1="48" x2="52" y2="48" className="stroke-white/20" strokeWidth="1.4" />
       {bars.map(([x, top, cls], i) => (
         <rect
@@ -126,9 +134,9 @@ function GlyphData() {
   );
 }
 
-function GlyphAdvisory() {
+function GlyphAdvisory({ className }: GlyphProps) {
   return (
-    <Frame>
+    <Frame className={className}>
       <circle cx="32" cy="32" r="18" className="stroke-white/15" strokeWidth="1.4" />
       <circle cx="32" cy="32" r="18" className="stroke-accent-cyan/30 pulse-ring" strokeWidth="1.4" />
       <circle cx="32" cy="32" r="10" className="stroke-white/20" strokeWidth="1.4" />
@@ -140,7 +148,7 @@ function GlyphAdvisory() {
   );
 }
 
-const glyphs: Record<string, () => JSX.Element> = {
+const glyphs: Record<string, (p: GlyphProps) => JSX.Element> = {
   "ai-engineering": GlyphAI,
   "software-engineering": GlyphSoftware,
   "web-experience": GlyphWeb,
@@ -149,7 +157,13 @@ const glyphs: Record<string, () => JSX.Element> = {
   advisory: GlyphAdvisory,
 };
 
-export function ServiceGlyph({ slug }: { slug: string }) {
+export function ServiceGlyph({
+  slug,
+  className,
+}: {
+  slug: string;
+  className?: string;
+}) {
   const Glyph = glyphs[slug] ?? GlyphAI;
-  return <Glyph />;
+  return <Glyph className={className} />;
 }

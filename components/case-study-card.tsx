@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import type { CaseStudy } from "@/lib/content";
+import { Sparkline } from "@/components/infographics/sparkline";
 import { cn } from "@/lib/utils";
 
 export function CaseStudyCard({
@@ -40,7 +41,11 @@ export function CaseStudyCard({
             <div className="headline text-2xl text-gradient-accent md:text-[1.7rem]">
               {m.value}
             </div>
-            <div className="mt-1.5 text-xs leading-tight text-white/45">
+            <Sparkline
+              seed={study.slug + m.label}
+              className="mt-2 h-5 w-full opacity-70 transition-opacity duration-500 group-hover:opacity-100"
+            />
+            <div className="mt-2 text-xs leading-tight text-white/45">
               {m.label}
             </div>
           </div>
