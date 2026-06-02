@@ -171,6 +171,48 @@
   }
 }
 
+/* ---- Infographic animation primitives (reduced-motion safe via the
+   global media query below, which freezes all animations) ---- */
+@keyframes dashflow {
+  to {
+    stroke-dashoffset: -24;
+  }
+}
+@keyframes pulsering {
+  0%,
+  100% {
+    opacity: 0.2;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.6;
+    transform: scale(1.06);
+  }
+}
+@keyframes spin-slow {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.flow-line {
+  stroke-dasharray: 4 7;
+  animation: dashflow 1.3s linear infinite;
+}
+.flow-line-rev {
+  stroke-dasharray: 4 7;
+  animation: dashflow 1.7s linear infinite reverse;
+}
+.pulse-ring {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: pulsering 3.2s ease-in-out infinite;
+}
+.spin-slow {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: spin-slow 26s linear infinite;
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

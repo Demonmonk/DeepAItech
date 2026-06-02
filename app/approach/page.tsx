@@ -4,8 +4,8 @@ import { SectionHeading } from "@/components/section-heading";
 import { CtaSection } from "@/components/cta-section";
 import { AmbientBackground } from "@/components/background";
 import { BuildPipeline } from "@/components/infographics/build-pipeline";
-import { IntegrationStack } from "@/components/infographics/integration-stack";
-import { AssuranceGrid } from "@/components/infographics/assurance-grid";
+import { IntegrationFlow } from "@/components/infographics/integration-flow";
+import { AssuranceOrbit } from "@/components/infographics/assurance-orbit";
 
 export const metadata: Metadata = {
   title: "Approach",
@@ -51,8 +51,8 @@ export default function ApproachPage() {
             title="It plugs into your stack — securely"
             description="AI is only useful when it lives where your work happens. We connect it to your systems through a secure layer you control."
           />
-          <div className="mt-14">
-            <IntegrationStack />
+          <div className="mt-16">
+            <IntegrationFlow />
           </div>
         </div>
       </section>
@@ -65,8 +65,8 @@ export default function ApproachPage() {
             title="Trust, engineered in by default"
             description="The standards behind every engagement — so you know exactly the quality you're getting before you commit."
           />
-          <div className="mt-14">
-            <AssuranceGrid />
+          <div className="mt-16">
+            <AssuranceOrbit />
           </div>
         </div>
       </section>
