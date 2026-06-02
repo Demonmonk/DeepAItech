@@ -93,35 +93,29 @@ export default function InsightPage({
 
           <Reveal delay={0.2}>
             <div className="mt-10 space-y-6 border-t border-white/10 pt-10 text-base leading-relaxed text-white/65">
-              <p>
-                This is a placeholder article. In production, the body would be
-                authored in MDX or sourced from a headless CMS — letting the
-                team publish rich, formatted writing with code samples,
-                diagrams, and embedded media.
-              </p>
-              <p>
-                The structure is ready: typography, spacing, and reading rhythm
-                are all tuned for long-form content on a dark canvas. Drop your
-                content management system of choice behind this route and the
-                experience carries straight through.
-              </p>
-              <h2 className="headline text-2xl text-white md:text-3xl">
-                Why this matters
-              </h2>
-              <p>
-                Great engineering writing compounds. It builds trust with
-                prospective clients, sharpens the team&rsquo;s own thinking, and
-                becomes a durable asset that works long after it&rsquo;s
-                published.
-              </p>
-              <blockquote className="border-l-2 border-accent-cyan/60 pl-5 text-white/75">
-                &ldquo;The best way to demonstrate expertise is to show your
-                work — honestly, and in detail.&rdquo;
-              </blockquote>
-              <p>
-                Replace this section with your real content whenever you&rsquo;re
-                ready. The foundation is built to scale with you.
-              </p>
+              {post.body.map((block, i) => {
+                if (block.type === "h") {
+                  return (
+                    <h2
+                      key={i}
+                      className="headline pt-2 text-2xl text-white md:text-3xl"
+                    >
+                      {block.text}
+                    </h2>
+                  );
+                }
+                if (block.type === "quote") {
+                  return (
+                    <blockquote
+                      key={i}
+                      className="headline-italic border-l-2 border-accent-cyan/60 pl-6 text-xl leading-snug text-white/85 md:text-2xl"
+                    >
+                      {block.text}
+                    </blockquote>
+                  );
+                }
+                return <p key={i}>{block.text}</p>;
+              })}
             </div>
           </Reveal>
         </div>

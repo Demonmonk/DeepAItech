@@ -315,6 +315,11 @@ export const caseStudies: CaseStudy[] = [
   },
 ];
 
+export type ArticleBlock =
+  | { type: "p"; text: string }
+  | { type: "h"; text: string }
+  | { type: "quote"; text: string };
+
 export type Insight = {
   slug: string;
   category: string;
@@ -323,6 +328,7 @@ export type Insight = {
   date: string;
   readTime: string;
   keyPoints: string[];
+  body: ArticleBlock[];
 };
 
 export const insights: Insight[] = [
@@ -339,6 +345,30 @@ export const insights: Insight[] = [
       "Evaluate against golden datasets before anything reaches users.",
       "Monitor grounding, cost, and latency continuously in production.",
     ],
+    body: [
+      {
+        type: "p",
+        text: "A retrieval-augmented generation demo takes an afternoon. A RAG system you can put in front of customers takes a different kind of discipline — because the failure mode isn't a crash, it's a confident, wrong answer.",
+      },
+      { type: "h", text: "Retrieval is the product" },
+      {
+        type: "p",
+        text: "Most teams obsess over the model and treat retrieval as plumbing. We do the opposite. How documents are chunked, embedded, ranked, and filtered sets the ceiling on every answer. Get retrieval right and a smaller model will out-perform a larger one working from noise.",
+      },
+      { type: "h", text: "Evaluate before you ship" },
+      {
+        type: "p",
+        text: "We build a golden dataset of real questions and known-good answers, then score every change against it: faithfulness to sources, answer relevance, and refusal behaviour when the context is thin. Nothing reaches a user on vibes.",
+      },
+      {
+        type: "quote",
+        text: "In production the question isn't ‘is it smart?’ — it's ‘is it grounded, and does it know when to say it doesn't know?’",
+      },
+      {
+        type: "p",
+        text: "Once live, we monitor grounding, latency, and cost continuously, and feed real queries back into the evaluation set. RAG isn't a launch — it's a loop.",
+      },
+    ],
   },
   {
     slug: "ai-roadmap-uae",
@@ -352,6 +382,30 @@ export const insights: Insight[] = [
       "Start from business outcomes, not the technology.",
       "Sequence quick wins ahead of moonshots to build momentum.",
       "Govern data and risk from day one, not as an afterthought.",
+    ],
+    body: [
+      {
+        type: "p",
+        text: "The UAE's National AI Strategy 2031 has turned AI from a side project into a board-level mandate. The organisations pulling ahead aren't the ones with the biggest models — they're the ones with the clearest sequence.",
+      },
+      { type: "h", text: "Start from the outcome" },
+      {
+        type: "p",
+        text: "We begin every roadmap from a business outcome, not a technology. Which decisions are slow? Which processes are manual? Where does revenue leak? AI is only interesting where it moves one of those numbers.",
+      },
+      { type: "h", text: "Sequence for momentum" },
+      {
+        type: "p",
+        text: "Quick, visible wins fund the harder work and build internal trust. We stage the roadmap so value compounds — a useful internal copilot this quarter earns the mandate for the platform investment next year.",
+      },
+      {
+        type: "quote",
+        text: "Ambition is cheap. A credible sequence from here to there is the rare thing.",
+      },
+      {
+        type: "p",
+        text: "Throughout, data governance and risk are designed in from day one — not because a regulator asked, but because trust is the asset that makes everything else possible.",
+      },
     ],
   },
   {
@@ -367,6 +421,30 @@ export const insights: Insight[] = [
       "Treat the component library as a product, with owners and versioning.",
       "Govern contributions so the system grows without fragmenting.",
     ],
+    body: [
+      {
+        type: "p",
+        text: "A design system is easy to start and hard to sustain. Most don't fail technically — they fail socially, fragmenting the moment teams find them faster to bypass than to use.",
+      },
+      { type: "h", text: "Tokens before components" },
+      {
+        type: "p",
+        text: "We start with tokens — colour, type, spacing, motion — as single sources of truth. Components come second. This ordering means a brand change is a token change, not a six-week refactor.",
+      },
+      { type: "h", text: "Treat it as a product" },
+      {
+        type: "p",
+        text: "A system with no owner becomes a graveyard. We give it a roadmap, versioning, and contribution guidelines, so it evolves with the product instead of ossifying against it.",
+      },
+      {
+        type: "quote",
+        text: "The goal isn't consistency for its own sake — it's letting design and engineering move as one team.",
+      },
+      {
+        type: "p",
+        text: "Done well, the system disappears into the work: people ship faster, the product feels coherent, and nobody has to think about it.",
+      },
+    ],
   },
   {
     slug: "evaluating-llms",
@@ -380,6 +458,30 @@ export const insights: Insight[] = [
       "Public benchmarks rarely predict real-world behaviour.",
       "Build golden datasets from your actual use cases.",
       "Keep humans in the loop for high-stakes evaluation.",
+    ],
+    body: [
+      {
+        type: "p",
+        text: "Public benchmarks make for great headlines and poor decisions. A model that tops a leaderboard can still fail your users in ways no generic test would catch.",
+      },
+      { type: "h", text: "Build your own golden set" },
+      {
+        type: "p",
+        text: "We assemble evaluation data from your actual use cases — real questions, real edge cases, real failure modes — and grade against it. That's the only benchmark that predicts production behaviour.",
+      },
+      { type: "h", text: "Keep humans in the loop" },
+      {
+        type: "p",
+        text: "Automated scoring scales; human judgement anchors. For anything high-stakes, we pair automated evals with structured human review before a model touches a customer.",
+      },
+      {
+        type: "quote",
+        text: "Offline benchmarks tell you a model is capable. Your own evals tell you it's ready.",
+      },
+      {
+        type: "p",
+        text: "And because models, prompts, and data all drift, evaluation is continuous — a regression suite that runs on every change, not a one-time gate.",
+      },
     ],
   },
 ];

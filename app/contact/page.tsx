@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Mail, MapPin, Phone, Clock } from "lucide-react";
+import { Mail, MapPin, Clock } from "lucide-react";
 import { PageHeader } from "@/components/page-header";
 import { ContactForm } from "@/components/contact-form";
 import { AmbientBackground } from "@/components/background";
@@ -14,7 +14,6 @@ export const metadata: Metadata = {
 
 const details = [
   { icon: Mail, label: "Email", value: site.email, href: `mailto:${site.email}` },
-  { icon: Phone, label: "Phone", value: site.phone, href: `tel:${site.phone.replace(/\s/g, "")}` },
   { icon: MapPin, label: "Location", value: site.location },
   { icon: Clock, label: "Response time", value: "Within 1 business day" },
 ];
