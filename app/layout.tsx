@@ -26,7 +26,7 @@ const jetbrains = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://deepaitech.ai"),
+  metadataBase: new URL("https://deepaitechllc.com"),
   title: {
     default: `${site.legalName} — ${site.tagline}`,
     template: `%s — ${site.name}`,

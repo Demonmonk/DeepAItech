@@ -6,6 +6,6 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: "*",
       allow: "/",
     },
-    sitemap: "https://deepaitech.ai/sitemap.xml",
+    sitemap: "https://deepaitechllc.com/sitemap.xml",
   };
 }

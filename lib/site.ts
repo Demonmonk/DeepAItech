@@ -5,7 +5,7 @@ export const site = {
   description:
     "Deep AI Tech LLC is a UAE-based AI and software consultancy. We design, build, and scale intelligent products, applications, and digital transformation programs for ambitious organizations.",
   location: "Dubai, United Arab Emirates",
-  email: "hello@deepaitech.ai",
+  email: "hello@deepaitechllc.com",
   phone: "+971 4 000 0000",
   founded: 2026,
   social: {

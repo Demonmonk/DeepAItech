@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 import { caseStudies, insights } from "@/lib/content";
 
-const BASE = "https://deepaitech.ai";
+const BASE = "https://deepaitechllc.com";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const routes = ["", "/services", "/solutions", "/approach", "/work", "/about", "/insights", "/contact"].map(
