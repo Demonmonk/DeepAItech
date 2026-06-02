@@ -29,16 +29,20 @@ export default function SolutionsPage() {
 
       <section className="relative pb-8">
         <div className="container-max">
-          <RevealGroup className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {solutions.map((sol) => {
+          <RevealGroup className="grid gap-x-10 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
+            {solutions.map((sol, i) => {
               const Icon = sol.icon;
               return (
                 <RevealItem key={sol.title}>
-                  <div className="glass glass-hover group h-full p-8">
-                    <span className="inline-flex h-12 w-12 items-center justify-center rounded-xl border border-white/10 bg-white/[0.03] text-accent-cyan transition-colors duration-500 group-hover:border-accent-cyan/40">
-                      <Icon className="h-5 w-5" strokeWidth={1.6} />
-                    </span>
-                    <h3 className="mt-6 font-display text-xl font-semibold tracking-tight text-white">
+                  <div className="group border-t border-white/10 pt-6 transition-colors duration-500 hover:border-accent-cyan/50">
+                    <div className="flex items-center justify-between">
+                      <Icon
+                        className="h-5 w-5 text-accent-cyan"
+                        strokeWidth={1.6}
+                      />
+                      <span className="index">S/0{i + 1}</span>
+                    </div>
+                    <h3 className="headline mt-5 text-xl text-white">
                       {sol.title}
                     </h3>
                     <p className="mt-3 text-sm leading-relaxed text-white/55">
@@ -60,14 +64,12 @@ export default function SolutionsPage() {
             title="Domain depth where it counts"
             description="We pair engineering rigor with sector knowledge — so solutions land in the real-world context of your business."
           />
-          <RevealGroup className="mt-14 grid gap-px overflow-hidden rounded-2xl border border-white/10 bg-white/[0.06] sm:grid-cols-2 lg:grid-cols-4">
+          <RevealGroup className="mt-14 grid gap-x-10 gap-y-10 sm:grid-cols-2 lg:grid-cols-4">
             {industries.map((ind) => (
               <RevealItem key={ind.name}>
-                <div className="group h-full bg-ink-900 p-7 transition-colors duration-500 hover:bg-ink-800">
-                  <h3 className="font-display text-base font-semibold text-white">
-                    {ind.name}
-                  </h3>
-                  <p className="mt-2 text-sm leading-relaxed text-white/50">
+                <div className="group border-t border-white/10 pt-5 transition-colors duration-500 hover:border-accent-cyan/50">
+                  <h3 className="headline text-lg text-white">{ind.name}</h3>
+                  <p className="mt-2.5 text-sm leading-relaxed text-white/50">
                     {ind.blurb}
                   </p>
                 </div>

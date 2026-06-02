@@ -36,10 +36,10 @@ export default function AboutPage() {
         <div className="container-max grid gap-12 lg:grid-cols-2 lg:gap-20">
           <Reveal>
             <div>
-              <h2 className="font-display text-2xl font-semibold tracking-tight text-white md:text-3xl">
+              <h2 className="headline text-3xl text-white md:text-4xl">
                 Our mission
               </h2>
-              <p className="mt-5 text-lg leading-relaxed text-white/60">
+              <p className="mt-6 text-lg leading-relaxed text-white/60">
                 We believe the next decade belongs to organizations that can
                 blend human judgment with machine intelligence. Our job is to
                 make that blend practical — designing and engineering systems
@@ -56,22 +56,14 @@ export default function AboutPage() {
           </Reveal>
 
           <Reveal delay={0.1}>
-            <div className="border-glow relative overflow-hidden rounded-3xl border border-white/10 bg-ink-800/50 p-8 md:p-10">
-              <div
-                aria-hidden
-                className="absolute -right-10 -top-10 h-40 w-40 rounded-full bg-accent-violet/15 blur-3xl"
-              />
-              <blockquote className="relative">
-                <p className="font-display text-xl font-medium leading-relaxed text-white md:text-2xl">
-                  &ldquo;We don&rsquo;t hand over slide decks and walk away. We
-                  embed, we build, and we leave your team able to run what we
-                  created together.&rdquo;
-                </p>
-                <footer className="mt-6 text-sm text-white/50">
-                  — The {site.name} team
-                </footer>
-              </blockquote>
-            </div>
+            <blockquote className="border-l border-accent-cyan/40 pl-8 md:pl-10">
+              <p className="headline-italic text-2xl leading-snug text-white md:text-[2rem] md:leading-snug">
+                &ldquo;We don&rsquo;t hand over slide decks and walk away. We
+                embed, we build, and we leave your team able to run what we
+                created together.&rdquo;
+              </p>
+              <footer className="index mt-7">— The {site.name} team</footer>
+            </blockquote>
           </Reveal>
         </div>
       </section>
@@ -88,19 +80,21 @@ export default function AboutPage() {
             title="Principles we don't compromise on"
             description="These aren't poster slogans. They shape who we hire, how we work, and what we ship."
           />
-          <RevealGroup className="mt-14 grid gap-5 sm:grid-cols-2">
+          <RevealGroup className="mt-14 grid gap-x-12 gap-y-12 sm:grid-cols-2">
             {values.map((value, i) => (
               <RevealItem key={value.title}>
-                <div className="glass glass-hover h-full p-8">
-                  <span className="font-mono text-sm text-accent-cyan">
+                <div className="group grid grid-cols-[auto_1fr] gap-x-6 border-t border-white/10 pt-7 transition-colors duration-500 hover:border-accent-cyan/50">
+                  <span className="headline text-3xl text-white/40 transition-colors duration-500 group-hover:text-accent-glow">
                     0{i + 1}
                   </span>
-                  <h3 className="mt-4 font-display text-xl font-semibold tracking-tight text-white">
-                    {value.title}
-                  </h3>
-                  <p className="mt-3 text-sm leading-relaxed text-white/55">
-                    {value.description}
-                  </p>
+                  <div>
+                    <h3 className="headline text-xl text-white">
+                      {value.title}
+                    </h3>
+                    <p className="mt-3 text-sm leading-relaxed text-white/55">
+                      {value.description}
+                    </p>
+                  </div>
                 </div>
               </RevealItem>
             ))}
@@ -112,7 +106,7 @@ export default function AboutPage() {
       <section className="relative border-y border-white/10 bg-ink-900/40 py-20">
         <div className="container-max flex flex-col items-start justify-between gap-8 md:flex-row md:items-center">
           <div className="max-w-2xl">
-            <h2 className="font-display text-2xl font-semibold tracking-tight text-white md:text-3xl">
+            <h2 className="headline text-3xl text-white md:text-4xl">
               Proudly building from the UAE
             </h2>
             <p className="mt-4 text-base leading-relaxed text-white/55">

@@ -82,7 +82,7 @@ export function BuildPipeline() {
             animate={{ opacity: 1, y: 0 }}
             exit={reduce ? undefined : { opacity: 0, y: -12 }}
             transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-            className="glass border-glow grid gap-6 p-7 md:grid-cols-[auto,1fr] md:gap-8 md:p-9"
+            className="grid gap-6 border-t border-white/15 pt-8 md:grid-cols-[auto,1fr] md:gap-8"
           >
             <span className="inline-flex h-12 w-12 items-center justify-center rounded-xl border border-white/10 bg-white/[0.03] text-accent-cyan">
               <Icon className="h-6 w-6" strokeWidth={1.6} />

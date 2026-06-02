@@ -39,9 +39,7 @@ export default function ContactPage() {
           {/* details */}
           <Reveal>
             <div className="lg:sticky lg:top-28 lg:self-start">
-              <h2 className="font-display text-xl font-semibold tracking-tight text-white">
-                Talk to a human
-              </h2>
+              <h2 className="headline text-2xl text-white">Talk to a human</h2>
               <p className="mt-3 text-sm leading-relaxed text-white/55">
                 No call centers, no runaround. Your message reaches our team
                 directly — and a real engineer or strategist will reply.

@@ -29,7 +29,7 @@ export default function InsightsPage() {
 
       <section className="relative pb-8">
         <div className="container-max">
-          <RevealGroup className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+          <RevealGroup className="grid gap-x-10 gap-y-12 md:grid-cols-2 lg:grid-cols-3">
             {insights.map((insight) => (
               <RevealItem key={insight.slug}>
                 <InsightCard insight={insight} className="h-full" />

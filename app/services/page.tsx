@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { PageHeader } from "@/components/page-header";
-import { ServiceCard } from "@/components/service-card";
 import { ProcessSteps } from "@/components/process-steps";
 import { SectionHeading } from "@/components/section-heading";
 import { CtaSection } from "@/components/cta-section";
@@ -31,14 +30,47 @@ export default function ServicesPage() {
 
       <section className="relative pb-8">
         <div className="container-max">
-          <RevealGroup className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-            {services.map((service) => (
-              <RevealItem key={service.slug}>
-                <div id={service.slug} className="h-full scroll-mt-28">
-                  <ServiceCard service={service} detailed className="h-full" />
-                </div>
-              </RevealItem>
-            ))}
+          <RevealGroup className="border-b border-white/10">
+            {services.map((service, i) => {
+              const Icon = service.icon;
+              return (
+                <RevealItem key={service.slug}>
+                  <div
+                    id={service.slug}
+                    className="grid scroll-mt-28 gap-6 border-t border-white/10 py-12 md:grid-cols-12 md:gap-10 md:py-16"
+                  >
+                    <span className="index md:col-span-1">0{i + 1}</span>
+
+                    <div className="md:col-span-6">
+                      <span className="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-white/10 bg-white/[0.03] text-accent-cyan">
+                        <Icon className="h-5 w-5" strokeWidth={1.6} />
+                      </span>
+                      <h2 className="headline mt-6 text-[1.9rem] leading-tight text-white md:text-[2.2rem]">
+                        {service.title}
+                      </h2>
+                      <p className="mt-4 max-w-xl text-base leading-relaxed text-white/60">
+                        {service.description}
+                      </p>
+                    </div>
+
+                    <div className="md:col-span-5">
+                      <span className="index">Deliverables</span>
+                      <ul className="mt-4">
+                        {service.deliverables.map((d) => (
+                          <li
+                            key={d}
+                            className="flex items-center gap-3 border-t border-white/10 py-3 text-sm text-white/70 first:border-t-0"
+                          >
+                            <span className="h-1 w-1 shrink-0 rounded-full bg-accent-cyan" />
+                            {d}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                </RevealItem>
+              );
+            })}
           </RevealGroup>
         </div>
       </section>
