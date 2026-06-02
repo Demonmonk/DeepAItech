@@ -315,6 +315,7 @@ export type Insight = {
   excerpt: string;
   date: string;
   readTime: string;
+  keyPoints: string[];
 };
 
 export const insights: Insight[] = [
@@ -326,6 +327,11 @@ export const insights: Insight[] = [
       "Retrieval-augmented generation is easy to demo and hard to operate. Here is the architecture and evaluation discipline we use to make it reliable.",
     date: "2026-04-22",
     readTime: "8 min",
+    keyPoints: [
+      "Retrieval quality matters more than which model you pick.",
+      "Evaluate against golden datasets before anything reaches users.",
+      "Monitor grounding, cost, and latency continuously in production.",
+    ],
   },
   {
     slug: "ai-roadmap-uae",
@@ -335,6 +341,11 @@ export const insights: Insight[] = [
       "The National AI Strategy 2031 is reshaping the region. We break down how organizations can move from ambition to measurable impact.",
     date: "2026-03-15",
     readTime: "6 min",
+    keyPoints: [
+      "Start from business outcomes, not the technology.",
+      "Sequence quick wins ahead of moonshots to build momentum.",
+      "Govern data and risk from day one, not as an afterthought.",
+    ],
   },
   {
     slug: "design-systems-that-scale",
@@ -344,6 +355,11 @@ export const insights: Insight[] = [
       "A look at how we structure tokens, components, and governance so design and engineering move as one team.",
     date: "2026-02-08",
     readTime: "5 min",
+    keyPoints: [
+      "Tokens first — colour, type, and spacing as single sources of truth.",
+      "Treat the component library as a product, with owners and versioning.",
+      "Govern contributions so the system grows without fragmenting.",
+    ],
   },
   {
     slug: "evaluating-llms",
@@ -353,6 +369,11 @@ export const insights: Insight[] = [
       "Offline benchmarks lie. We share the eval harness, golden datasets, and human review loops we trust in the real world.",
     date: "2026-01-19",
     readTime: "9 min",
+    keyPoints: [
+      "Public benchmarks rarely predict real-world behaviour.",
+      "Build golden datasets from your actual use cases.",
+      "Keep humans in the loop for high-stakes evaluation.",
+    ],
   },
 ];
 

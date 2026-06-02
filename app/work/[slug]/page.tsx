@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import { ArrowLeft, ArrowUpRight } from "lucide-react";
+import { ArrowLeft, ArrowUpRight, Target, Compass, Boxes, TrendingUp } from "lucide-react";
 import { AmbientBackground } from "@/components/background";
 import { CtaSection } from "@/components/cta-section";
-import { Reveal } from "@/components/reveal";
+import { Reveal, RevealGroup, RevealItem } from "@/components/reveal";
 import { caseStudies } from "@/lib/content";
 
 export function generateStaticParams() {
@@ -85,43 +85,57 @@ export default function CaseStudyPage({
           </Reveal>
         </div>
 
-        {/* body */}
-        <div className="container-max mt-16 max-w-3xl">
-          <Reveal>
-            <div className="space-y-10">
-              <Section
-                title="The challenge"
-                body={`${study.client} faced mounting pressure in ${study.industry.toLowerCase()} — legacy tooling, fragmented data, and processes that couldn't keep pace with demand. Leadership needed an outcome, not a science project: something that would move the metrics that matter, and do it reliably in production.`}
-              />
-              <Section
-                title="Our approach"
-                body="We started with a focused discovery to map the highest-leverage opportunity, then assembled a senior, cross-functional pod — strategy, design, data, and engineering working as one. We prototyped quickly, validated value with real users, and built toward production from day one with testing, observability, and clear guardrails."
-              />
-              <Section
-                title="What we built"
-                body={`The solution combined ${study.tags.join(
+        {/* body — visual engagement framework */}
+        <div className="container-max mt-20 max-w-4xl">
+          <span className="index">The engagement</span>
+          <RevealGroup className="mt-8 grid gap-x-12 gap-y-12 md:grid-cols-2">
+            {[
+              {
+                icon: Target,
+                label: "The challenge",
+                body: `Legacy tooling and fragmented data were holding ${study.industry.toLowerCase()} back. ${study.client} needed to move a metric that mattered — not run a science project.`,
+              },
+              {
+                icon: Compass,
+                label: "Our approach",
+                body: "A focused discovery to find the highest-leverage opportunity, then a senior pod — strategy, design, data, engineering — building toward production from day one.",
+              },
+              {
+                icon: Boxes,
+                label: "What we built",
+                body: `A cohesive system combining ${study.tags.join(
                   ", "
-                )} into a cohesive system, integrated into the client's existing landscape. We prioritized reliability and explainability so the team could trust — and own — what we shipped together.`}
-              />
-              <Section
-                title="The outcome"
-                body={`Within months, the impact was clear and measurable. Beyond the headline numbers, ${study.client} gained a durable capability and an internal team confident enough to extend the platform on their own.`}
-              />
-            </div>
-          </Reveal>
-
-          <Reveal delay={0.1}>
-            <div className="mt-10 flex flex-wrap gap-2">
-              {study.tags.map((t) => (
-                <span
-                  key={t}
-                  className="rounded-full border border-white/10 bg-white/[0.03] px-3 py-1 text-xs text-white/55"
-                >
-                  {t}
-                </span>
-              ))}
-            </div>
-          </Reveal>
+                )}, wired into their existing stack with reliability and explainability built in.`,
+              },
+              {
+                icon: TrendingUp,
+                label: "The outcome",
+                body: `Clear, measurable impact within months — plus a durable capability the ${study.client} team can run and extend on their own.`,
+              },
+            ].map((s, i) => {
+              const Icon = s.icon;
+              return (
+                <RevealItem key={s.label}>
+                  <div className="group grid grid-cols-[auto_1fr] gap-x-5 border-t border-white/15 pt-6 transition-colors duration-500 hover:border-accent-cyan/50">
+                    <span className="flex h-11 w-11 items-center justify-center rounded-xl border border-white/10 bg-white/[0.03] text-accent-cyan">
+                      <Icon className="h-5 w-5" strokeWidth={1.6} />
+                    </span>
+                    <div>
+                      <div className="flex items-baseline gap-3">
+                        <span className="index">0{i + 1}</span>
+                        <h2 className="headline text-xl text-white">
+                          {s.label}
+                        </h2>
+                      </div>
+                      <p className="mt-3 text-sm leading-relaxed text-white/60">
+                        {s.body}
+                      </p>
+                    </div>
+                  </div>
+                </RevealItem>
+              );
+            })}
+          </RevealGroup>
         </div>
 
         {/* related */}
@@ -152,16 +166,5 @@ export default function CaseStudyPage({
 
       <CtaSection />
     </>
-  );
-}
-
-function Section({ title, body }: { title: string; body: string }) {
-  return (
-    <div>
-      <h2 className="font-display text-xl font-semibold tracking-tight text-white md:text-2xl">
-        {title}
-      </h2>
-      <p className="mt-3 text-base leading-relaxed text-white/60">{body}</p>
-    </div>
   );
 }

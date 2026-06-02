@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, Compass, Users, ShieldCheck } from "lucide-react";
 import { PageHeader } from "@/components/page-header";
 import { SectionHeading } from "@/components/section-heading";
 import { StatsBand } from "@/components/stats-band";
@@ -65,6 +65,49 @@ export default function AboutPage() {
               <footer className="index mt-7">— The {site.name} team</footer>
             </blockquote>
           </Reveal>
+        </div>
+      </section>
+
+      {/* How we work — at a glance */}
+      <section className="relative pb-8 pt-4">
+        <div className="container-max">
+          <RevealGroup className="grid gap-x-10 gap-y-8 sm:grid-cols-3">
+            {[
+              {
+                icon: Compass,
+                title: "Strategy meets craft",
+                detail: "We advise the boardroom and ship the code.",
+              },
+              {
+                icon: Users,
+                title: "Embedded, not arm's-length",
+                detail: "We work inside your team, not from a distance.",
+              },
+              {
+                icon: ShieldCheck,
+                title: "Production-grade by default",
+                detail: "Tested, observable, and built to last.",
+              },
+            ].map((item) => {
+              const Icon = item.icon;
+              return (
+                <RevealItem key={item.title}>
+                  <div className="border-t border-white/10 pt-6">
+                    <Icon
+                      className="h-5 w-5 text-accent-cyan"
+                      strokeWidth={1.6}
+                    />
+                    <h3 className="headline mt-5 text-lg text-white">
+                      {item.title}
+                    </h3>
+                    <p className="mt-2.5 text-sm leading-relaxed text-white/55">
+                      {item.detail}
+                    </p>
+                  </div>
+                </RevealItem>
+              );
+            })}
+          </RevealGroup>
         </div>
       </section>
 

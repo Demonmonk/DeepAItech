@@ -61,7 +61,7 @@ export default function InsightPage({
           </Reveal>
 
           <Reveal delay={0.1}>
-            <h1 className="mt-5 font-display text-3xl font-semibold leading-[1.12] tracking-tightest text-white text-balance md:text-5xl">
+            <h1 className="headline mt-6 text-[2.2rem] leading-[1.08] text-white text-balance md:text-5xl">
               {post.title}
             </h1>
           </Reveal>
@@ -70,6 +70,25 @@ export default function InsightPage({
             <p className="mt-6 text-lg leading-relaxed text-white/60">
               {post.excerpt}
             </p>
+          </Reveal>
+
+          {/* Key takeaways — scannable summary up top */}
+          <Reveal delay={0.18}>
+            <div className="mt-10 rounded-2xl border border-white/10 bg-white/[0.02] p-7 md:p-8">
+              <span className="index">Key takeaways</span>
+              <ul className="mt-6 space-y-5">
+                {post.keyPoints.map((pt, i) => (
+                  <li key={pt} className="flex items-start gap-4">
+                    <span className="headline text-xl leading-none text-accent-cyan/80">
+                      0{i + 1}
+                    </span>
+                    <span className="text-base leading-relaxed text-white/75">
+                      {pt}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </Reveal>
 
           <Reveal delay={0.2}>
@@ -86,7 +105,7 @@ export default function InsightPage({
                 content management system of choice behind this route and the
                 experience carries straight through.
               </p>
-              <h2 className="font-display text-2xl font-semibold tracking-tight text-white">
+              <h2 className="headline text-2xl text-white md:text-3xl">
                 Why this matters
               </h2>
               <p>
@@ -108,9 +127,7 @@ export default function InsightPage({
         </div>
 
         <div className="container-max mt-24 max-w-5xl">
-          <h2 className="font-display text-xl font-semibold tracking-tight text-white">
-            Keep reading
-          </h2>
+          <h2 className="headline text-2xl text-white">Keep reading</h2>
           <div className="mt-6 grid gap-5 md:grid-cols-3">
             {related.map((r) => (
               <InsightCard key={r.slug} insight={r} className="h-full" />
