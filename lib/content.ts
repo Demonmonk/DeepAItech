@@ -134,6 +134,7 @@ export const services: Service[] = [
 ];
 
 export type Solution = {
+  id: string;
   icon: LucideIcon;
   title: string;
   description: string;
@@ -141,36 +142,42 @@ export type Solution = {
 
 export const solutions: Solution[] = [
   {
+    id: "assistants",
     icon: Bot,
     title: "Intelligent Assistants",
     description:
       "Domain-aware copilots and chat agents that automate support, research, and internal knowledge work.",
   },
   {
+    id: "predictive",
     icon: Cpu,
     title: "Predictive Intelligence",
     description:
       "Forecasting, risk scoring, and recommendation engines that turn historical data into foresight.",
   },
   {
+    id: "automation",
     icon: Layers,
     title: "Process Automation",
     description:
       "Document understanding and workflow automation that removes repetitive, error-prone manual work.",
   },
   {
+    id: "cloud",
     icon: Cloud,
     title: "Cloud & Platform Engineering",
     description:
       "Scalable, secure cloud foundations on AWS, Azure, and GCP — built for reliability and cost control.",
   },
   {
+    id: "secure",
     icon: ShieldCheck,
     title: "Responsible & Secure AI",
     description:
       "Governance, evaluation, and guardrails so your AI is safe, compliant, and explainable.",
   },
   {
+    id: "generative",
     icon: Sparkles,
     title: "Generative Experiences",
     description:

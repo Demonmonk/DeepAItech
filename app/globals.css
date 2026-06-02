@@ -212,6 +212,49 @@
   transform-origin: center;
   animation: spin-slow 26s linear infinite;
 }
+@keyframes barpulse {
+  0%,
+  100% {
+    transform: scaleY(0.4);
+  }
+  50% {
+    transform: scaleY(1);
+  }
+}
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 0.2;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+@keyframes floaty {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-2px);
+  }
+}
+.bar-pulse {
+  transform-box: fill-box;
+  transform-origin: bottom center;
+  animation: barpulse 1.9s ease-in-out infinite;
+}
+.blink {
+  animation: blink 1.5s ease-in-out infinite;
+}
+.floaty {
+  animation: floaty 3s ease-in-out infinite;
+}
+.spin-rev {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: spin-slow 18s linear infinite reverse;
+}
 
 @media (prefers-reduced-motion: reduce) {
   *,

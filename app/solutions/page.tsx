@@ -4,6 +4,7 @@ import { SectionHeading } from "@/components/section-heading";
 import { CtaSection } from "@/components/cta-section";
 import { AmbientBackground } from "@/components/background";
 import { RevealGroup, RevealItem } from "@/components/reveal";
+import { SolutionGlyph } from "@/components/infographics/solution-glyph";
 import { solutions, industries } from "@/lib/content";
 
 export const metadata: Metadata = {
@@ -31,18 +32,16 @@ export default function SolutionsPage() {
         <div className="container-max">
           <RevealGroup className="grid gap-x-10 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
             {solutions.map((sol, i) => {
-              const Icon = sol.icon;
               return (
                 <RevealItem key={sol.title}>
                   <div className="group border-t border-white/10 pt-6 transition-colors duration-500 hover:border-accent-cyan/50">
-                    <div className="flex items-center justify-between">
-                      <Icon
-                        className="h-5 w-5 text-accent-cyan"
-                        strokeWidth={1.6}
-                      />
-                      <span className="index">S/0{i + 1}</span>
+                    <div className="flex items-start justify-between">
+                      <div className="-ml-1.5">
+                        <SolutionGlyph id={sol.id} />
+                      </div>
+                      <span className="index mt-2">S/0{i + 1}</span>
                     </div>
-                    <h3 className="headline mt-5 text-xl text-white">
+                    <h3 className="headline mt-4 text-xl text-white">
                       {sol.title}
                     </h3>
                     <p className="mt-3 text-sm leading-relaxed text-white/55">

@@ -5,6 +5,7 @@ import { SectionHeading } from "@/components/section-heading";
 import { CtaSection } from "@/components/cta-section";
 import { AmbientBackground } from "@/components/background";
 import { RevealGroup, RevealItem } from "@/components/reveal";
+import { ServiceGlyph } from "@/components/infographics/service-glyph";
 import { services } from "@/lib/content";
 
 export const metadata: Metadata = {
@@ -32,7 +33,6 @@ export default function ServicesPage() {
         <div className="container-max">
           <RevealGroup className="border-b border-white/10">
             {services.map((service, i) => {
-              const Icon = service.icon;
               return (
                 <RevealItem key={service.slug}>
                   <div
@@ -42,10 +42,10 @@ export default function ServicesPage() {
                     <span className="index md:col-span-1">0{i + 1}</span>
 
                     <div className="md:col-span-6">
-                      <span className="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-white/10 bg-white/[0.03] text-accent-cyan">
-                        <Icon className="h-5 w-5" strokeWidth={1.6} />
-                      </span>
-                      <h2 className="headline mt-6 text-[1.9rem] leading-tight text-white md:text-[2.2rem]">
+                      <div className="-ml-2">
+                        <ServiceGlyph slug={service.slug} />
+                      </div>
+                      <h2 className="headline mt-4 text-[1.9rem] leading-tight text-white md:text-[2.2rem]">
                         {service.title}
                       </h2>
                       <p className="mt-4 max-w-xl text-base leading-relaxed text-white/60">
