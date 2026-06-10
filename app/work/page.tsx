@@ -24,7 +24,7 @@ export default function WorkPage() {
             <span className="text-gradient"> Measurable results.</span>
           </>
         }
-        description="A selection of engagements where intelligent software changed the trajectory of a business. (Client names illustrative for confidentiality.)"
+        description="A selection of engagements where intelligent software changed the trajectory of a business."
       />
 
       <section className="relative pb-8">

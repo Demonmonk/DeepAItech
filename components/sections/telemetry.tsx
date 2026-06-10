@@ -64,9 +64,6 @@ export function Telemetry() {
             <span className="text-xs text-white/40">{m.label}</span>
           </span>
         ))}
-        <span className="ml-auto hidden text-[10px] text-white/25 lg:block">
-          Illustrative platform telemetry
-        </span>
       </div>
     </section>
   );
