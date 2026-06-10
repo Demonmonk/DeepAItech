@@ -258,8 +258,8 @@ export type CaseStudy = {
 
 export const caseStudies: CaseStudy[] = [
   {
-    slug: "atlas-bank-copilot",
-    client: "Atlas Fintech",
+    slug: "fintech-support-copilot",
+    client: "A UAE fintech",
     industry: "Financial Services",
     title: "A support copilot that cut first-response time by 38%",
     summary:
@@ -272,8 +272,8 @@ export const caseStudies: CaseStudy[] = [
     tags: ["RAG", "LLM", "Security"],
   },
   {
-    slug: "meridian-retail-forecasting",
-    client: "Meridian Retail",
+    slug: "retail-demand-forecasting",
+    client: "A regional retailer",
     industry: "Retail & E-commerce",
     title: "Demand forecasting that trimmed stockouts for a growing retailer",
     summary:
@@ -286,8 +286,8 @@ export const caseStudies: CaseStudy[] = [
     tags: ["Data Platform", "Forecasting", "Cloud"],
   },
   {
-    slug: "noor-health-imaging",
-    client: "Noor Health",
+    slug: "healthcare-imaging-triage",
+    client: "A healthcare provider",
     industry: "Healthcare",
     title: "An imaging triage assistant for a faster diagnostic workflow",
     summary:
@@ -300,8 +300,8 @@ export const caseStudies: CaseStudy[] = [
     tags: ["Computer Vision", "MLOps", "Healthcare"],
   },
   {
-    slug: "horizon-proptech",
-    client: "Horizon Properties",
+    slug: "proptech-replatform",
+    client: "A Dubai property group",
     industry: "Real Estate",
     title: "A rebuild that doubled qualified leads for a property team",
     summary:

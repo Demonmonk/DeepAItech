@@ -116,7 +116,7 @@ export default function CaseStudyPage({
               {
                 icon: TrendingUp,
                 label: "The outcome",
-                body: `Clear, measurable impact within months — plus a durable capability the ${study.client} team can run and extend on their own.`,
+                body: "Clear, measurable impact within months — plus a durable capability their own team can run and extend without us.",
               },
             ].map((s, i) => {
               const Icon = s.icon;
