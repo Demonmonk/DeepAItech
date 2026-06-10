@@ -6,6 +6,7 @@ import { CtaSection } from "@/components/cta-section";
 import { AmbientBackground } from "@/components/background";
 import { RevealGroup, RevealItem } from "@/components/reveal";
 import { ServiceGlyph } from "@/components/infographics/service-glyph";
+import { CapabilityRadar } from "@/components/infographics/capability-radar";
 import { services } from "@/lib/content";
 
 export const metadata: Metadata = {
@@ -85,6 +86,18 @@ export default function ServicesPage() {
           <div className="mt-14">
             <ProcessSteps />
           </div>
+        </div>
+      </section>
+
+      {/* Capability depth */}
+      <section className="relative border-t border-white/10 bg-ink-900/40 py-24 md:py-32">
+        <div className="container-max grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
+          <SectionHeading
+            eyebrow="Capability depth"
+            title="One team, the whole spectrum"
+            description="Most agencies are deep in one discipline and thin everywhere else. We keep senior depth across all six — because production AI fails at the weakest link, not the strongest."
+          />
+          <CapabilityRadar />
         </div>
       </section>
 

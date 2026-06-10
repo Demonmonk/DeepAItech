@@ -97,6 +97,16 @@
     @apply h-px w-full bg-white/10;
   }
 
+  /* Outlined display type (kinetic bands) */
+  .text-outline {
+    -webkit-text-stroke: 1px rgba(255, 255, 255, 0.22);
+    color: transparent;
+  }
+  .text-outline-accent {
+    -webkit-text-stroke: 1px rgba(31, 240, 192, 0.55);
+    color: transparent;
+  }
+
   /* Glass card */
   .glass {
     @apply rounded-2xl border border-white/10 bg-white/[0.02] backdrop-blur-sm;

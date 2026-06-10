@@ -9,7 +9,9 @@ import { SolutionGlyph } from "@/components/infographics/solution-glyph";
 import { CaseStudyCard } from "@/components/case-study-card";
 import { InsightCard } from "@/components/insight-card";
 import { ProcessSteps } from "@/components/process-steps";
-import { TechMarquee } from "@/components/marquee";
+import { Telemetry } from "@/components/sections/telemetry";
+import { KineticBand } from "@/components/sections/kinetic-band";
+import { StackGrid } from "@/components/sections/stack-grid";
 import { CtaSection } from "@/components/cta-section";
 import { AmbientBackground } from "@/components/background";
 import { Reveal, RevealGroup, RevealItem } from "@/components/reveal";
@@ -21,12 +23,8 @@ export default function HomePage() {
       <AmbientBackground />
       <Hero />
 
-      {/* Tech marquee strip */}
-      <section className="border-y border-white/10 bg-ink-900/40 py-6">
-        <div className="container-max">
-          <TechMarquee />
-        </div>
-      </section>
+      {/* Live telemetry strip */}
+      <Telemetry />
 
       {/* Services */}
       <section id="services" className="relative py-24 md:py-32">
@@ -74,8 +72,19 @@ export default function HomePage() {
           <div className="mt-10">
             <LiveNetwork />
           </div>
+          <div className="mt-12">
+            <div className="mb-6 flex items-baseline justify-between">
+              <span className="index">The stack we work in</span>
+              <span className="hidden text-xs text-white/35 sm:block">
+                …and whatever you already run
+              </span>
+            </div>
+            <StackGrid />
+          </div>
         </div>
       </section>
+
+      <KineticBand />
 
       {/* Solutions */}
       <section className="relative py-24 md:py-32">

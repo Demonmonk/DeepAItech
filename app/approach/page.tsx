@@ -4,6 +4,7 @@ import { SectionHeading } from "@/components/section-heading";
 import { CtaSection } from "@/components/cta-section";
 import { AmbientBackground } from "@/components/background";
 import { BuildPipeline } from "@/components/infographics/build-pipeline";
+import { EvalBoard } from "@/components/infographics/eval-board";
 import { IntegrationFlow } from "@/components/infographics/integration-flow";
 import { AssuranceOrbit } from "@/components/infographics/assurance-orbit";
 
@@ -38,6 +39,21 @@ export default function ApproachPage() {
           />
           <div className="mt-12">
             <BuildPipeline />
+          </div>
+        </div>
+      </section>
+
+      {/* Proof, not promises */}
+      <section className="relative py-12 md:py-20">
+        <div className="container-max">
+          <SectionHeading
+            align="center"
+            eyebrow="Proof, not promises"
+            title="Measured like production software"
+            description="Every AI feature is scored against a golden dataset before — and after — it ships. This is what a passing run looks like."
+          />
+          <div className="mt-12">
+            <EvalBoard />
           </div>
         </div>
       </section>
