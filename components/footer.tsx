@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowUpRight, Mail, MapPin } from "lucide-react";
+import { ArrowUpRight, Mail, MapPin, Phone } from "lucide-react";
 import { site } from "@/lib/site";
 import { services } from "@/lib/content";
 import { Logo } from "@/components/logo";
@@ -45,6 +45,13 @@ export function Footer() {
               >
                 <Mail className="h-4 w-4 text-accent-cyan" />
                 {site.email}
+              </a>
+              <a
+                href={`tel:${site.phone.replace(/\s/g, "")}`}
+                className="flex items-center gap-2.5 transition-colors hover:text-white"
+              >
+                <Phone className="h-4 w-4 text-accent-cyan" />
+                {site.phone}
               </a>
             </div>
           </div>
